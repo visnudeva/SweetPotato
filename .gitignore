@@ -1,0 +1,8 @@
+# Local / junk
+*.bak
+*~
+.DS_Store
+
+# Editor
+*.swp
+*.swo

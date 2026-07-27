@@ -1,0 +1,51 @@
+# SweetPotato swaylock
+# Colors: potato red #a73b50, potato orange #f79b29, charcoal #1d1f21
+
+daemonize
+show-failed-attempts
+ignore-empty-password
+indicator-idle-visible
+indicator-radius=200
+indicator-thickness=8
+font=Noto Sans
+font-size=42
+
+# Plain dark grey background (no image)
+color=2a2a2a
+scaling=solid_color
+
+# Ring / inside
+inside-color=1d1f21cc
+inside-clear-color=1d1f21cc
+inside-ver-color=1d1f21cc
+inside-wrong-color=1d1f21cc
+inside-caps-lock-color=1d1f21cc
+
+ring-color=a73b50ff
+ring-clear-color=f79b29ff
+ring-ver-color=f79b29ff
+ring-wrong-color=a73b50ff
+ring-caps-lock-color=f79b29ff
+
+key-hl-color=f79b29ff
+bs-hl-color=a73b50ff
+caps-lock-key-hl-color=f79b29ff
+caps-lock-bs-hl-color=a73b50ff
+
+line-color=00000000
+line-clear-color=00000000
+line-ver-color=00000000
+line-wrong-color=00000000
+line-caps-lock-color=00000000
+
+separator-color=00000000
+
+text-color=ffffffff
+text-clear-color=f79b29ff
+text-ver-color=f79b29ff
+text-wrong-color=a73b50ff
+text-caps-lock-color=f79b29ff
+
+layout-bg-color=1d1f21cc
+layout-border-color=a73b50ff
+layout-text-color=ffffffff
