@@ -1,6 +1,6 @@
 # SweetPotato
 
-Lightweight Sway theme for Arch-based systems (including Archcraft/swayfx).
+Lightweight Sway theme for Arch-based systems.
 
 ![SweetPotato wallpaper](SweetPotato.png)
 
