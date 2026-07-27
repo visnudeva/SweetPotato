@@ -24,6 +24,7 @@ Pick **FR** (AZERTY) or **US** (QWERTY) when asked. Re-login once so close butto
 | `Mod+Return` | Terminal (foot) |
 | `Mod+Space` | App launcher |
 | `Mod+l` | Lock (swaylock) |
+| `Mod+o` | Power off |
 | `Mod+Shift+e` | Exit Sway |
 | `Mod+Shift+c` | Reload config |
 

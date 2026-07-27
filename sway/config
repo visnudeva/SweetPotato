@@ -38,6 +38,7 @@ exec swayidle -w \
 input type:touchpad {
     dwt enabled
     tap enabled
+    drag_lock disabled
     natural_scroll enabled
     middle_emulation enabled
 }
@@ -86,6 +87,9 @@ bindgesture swipe:3:left workspace prev_on_output
 
     # Exit sway (logs you out of your Wayland session)
     bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
+
+    # Power off
+    bindsym $mod+o exec swaynag -t warning -m 'Power off this machine?' -B 'Yes, power off' 'systemctl poweroff'
 #
 # Moving around:
 #

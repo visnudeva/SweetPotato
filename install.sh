@@ -100,6 +100,8 @@ PACMAN_PKGS=(
   polkit-gnome
   wireless_tools
   libnotify
+  # TUI login (replaces SDDM when enabled)
+  ly
 )
 
 # Optional base GTK theme (Archcraft ships it as archcraft-gtk-theme-arc)
@@ -387,6 +389,23 @@ ok "Icons: Papirus-Dark (papirus-icon-theme)"
 CURSOR="${CURSOR_NAME}" "${HOME}/.config/sway/scripts/apply-theme.sh"
 ok "Theme applied to gsettings, xfconf, and xsettingsd"
 
+# Ly — TUI login screen (SweetPotato charcoal / potato red)
+if pacman -Q ly >/dev/null 2>&1; then
+  if [[ -f /etc/ly/config.ini ]] && [[ -f "${SCRIPT_DIR}/ly/config.ini" ]]; then
+    ${SUDO} cp -f /etc/ly/config.ini /etc/ly/config.ini.bak.sweetpotato 2>/dev/null || true
+    ${SUDO} cp -f "${SCRIPT_DIR}/ly/config.ini" /etc/ly/config.ini
+    ok "Ly themed (charcoal + potato red)"
+  fi
+  # Enable Ly on tty2; disable SDDM if present (takes effect on next boot)
+  if systemctl list-unit-files sddm.service >/dev/null 2>&1; then
+    ${SUDO} systemctl disable sddm.service 2>/dev/null || true
+  fi
+  ${SUDO} systemctl enable ly@tty2.service 2>/dev/null || true
+  ok "Ly enabled on tty2 (reboot to use the login screen)"
+else
+  warn "ly not installed — skip login screen setup"
+fi
+
 # Enable lingering pipewire user services if available
 systemctl --user enable --now pipewire pipewire-pulse wireplumber 2>/dev/null || true
 
@@ -396,6 +415,7 @@ echo
 echo "  Reload sway:   Mod+Shift+c"
 echo "  Lock screen:   Mod+l"
 echo "  App menu:      Mod+Space"
+echo "  Login screen:  Ly (reboot after install) — select Sway session"
 echo "  Switch layout later:"
 echo "    cp ~/.config/sway/config-fr ~/.config/sway/config   # French"
 echo "    cp ~/.config/sway/config-us ~/.config/sway/config   # US"
