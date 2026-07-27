@@ -5,27 +5,27 @@ daemonize
 show-failed-attempts
 ignore-empty-password
 indicator-idle-visible
-indicator-radius=200
+indicator-radius=150
 indicator-thickness=8
 font=Noto Sans
 font-size=42
 
-# Plain dark grey background (no image)
-color=2a2a2a
+# Plain charcoal background (no image)
+color=1d1f21
 scaling=solid_color
 
-# Ring / inside
-inside-color=1d1f21cc
-inside-clear-color=1d1f21cc
-inside-ver-color=1d1f21cc
-inside-wrong-color=1d1f21cc
-inside-caps-lock-color=1d1f21cc
+# Inside — potato orange; text charcoal for contrast
+inside-color=f79b29ff
+inside-clear-color=f79b29ff
+inside-ver-color=f79b29ff
+inside-wrong-color=f79b29ff
+inside-caps-lock-color=f79b29ff
 
 ring-color=a73b50ff
-ring-clear-color=f79b29ff
-ring-ver-color=f79b29ff
+ring-clear-color=a73b50ff
+ring-ver-color=a73b50ff
 ring-wrong-color=a73b50ff
-ring-caps-lock-color=f79b29ff
+ring-caps-lock-color=a73b50ff
 
 key-hl-color=f79b29ff
 bs-hl-color=a73b50ff
@@ -40,11 +40,11 @@ line-caps-lock-color=00000000
 
 separator-color=00000000
 
-text-color=ffffffff
-text-clear-color=f79b29ff
-text-ver-color=f79b29ff
+text-color=a73b50ff
+text-clear-color=a73b50ff
+text-ver-color=a73b50ff
 text-wrong-color=a73b50ff
-text-caps-lock-color=f79b29ff
+text-caps-lock-color=a73b50ff
 
 layout-bg-color=1d1f21cc
 layout-border-color=a73b50ff
