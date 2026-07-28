@@ -24,7 +24,9 @@ set $editor geany
 
 ### Output configuration
 #
+# Default wallpaper; wallpaper.sh overwrites ~/.config/sway/wallpaper.conf
 output * bg ~/.local/share/backgrounds/SweetPotato.png fill
+include ~/.config/sway/wallpaper.conf
 
 ### Idle configuration
 #
@@ -65,6 +67,12 @@ bindgesture swipe:3:left workspace prev_on_output
 
     # App launcher
     bindsym $mod+space exec $menu
+
+    # Wi‑Fi / NetworkManager (swaybar tray clicks don't open menus)
+    bindsym $mod+n exec networkmanager_dmenu
+
+    # Wallpaper selector
+    bindsym $mod+Shift+w exec ~/.config/sway/scripts/wallpaper.sh
 
     # Start your web browser
     bindsym $mod+w exec $web

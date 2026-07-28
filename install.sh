@@ -70,6 +70,7 @@ PACMAN_PKGS=(
   # networking / bluetooth (potato daily drivers)
   networkmanager
   network-manager-applet
+  networkmanager-dmenu
   blueman
   bluez
   bluez-utils
@@ -178,6 +179,7 @@ mkdir -p \
   "${HOME}/.config/gtk-4.0" \
   "${HOME}/.config/xsettingsd" \
   "${HOME}/.config/mako" \
+  "${HOME}/.config/networkmanager-dmenu" \
   "${HOME}/.themes" \
   "${HOME}/.local/share/backgrounds" \
   "${HOME}/Pictures/Screenshots"
@@ -209,13 +211,20 @@ cp -f "${SCRIPT_DIR}/sway/scripts/volume.sh" "${HOME}/.config/sway/scripts/volum
 cp -f "${SCRIPT_DIR}/sway/scripts/brightness.sh" "${HOME}/.config/sway/scripts/brightness.sh"
 cp -f "${SCRIPT_DIR}/sway/scripts/media.sh" "${HOME}/.config/sway/scripts/media.sh"
 cp -f "${SCRIPT_DIR}/sway/scripts/applauncher.sh" "${HOME}/.config/sway/scripts/applauncher.sh"
+cp -f "${SCRIPT_DIR}/sway/scripts/wallpaper.sh" "${HOME}/.config/sway/scripts/wallpaper.sh"
 chmod +x \
   "${HOME}/.config/sway/scripts/status.sh" \
   "${HOME}/.config/sway/scripts/apply-theme.sh" \
   "${HOME}/.config/sway/scripts/volume.sh" \
   "${HOME}/.config/sway/scripts/brightness.sh" \
   "${HOME}/.config/sway/scripts/media.sh" \
-  "${HOME}/.config/sway/scripts/applauncher.sh"
+  "${HOME}/.config/sway/scripts/applauncher.sh" \
+  "${HOME}/.config/sway/scripts/wallpaper.sh"
+# Persist wallpaper choice (include file must exist for sway)
+if [[ ! -f "${HOME}/.config/sway/wallpaper.conf" ]]; then
+  printf 'output * bg "%s" fill\n' "${WALLPAPER_DST}" \
+    > "${HOME}/.config/sway/wallpaper.conf"
+fi
 ok "Sway config (${KB_LAYOUT}) installed"
 
 # Swaylock — plain dark grey, large indicator (no background image)
@@ -297,6 +306,11 @@ ok "Geany SweetPotato color scheme installed"
 # Mako notifications
 cp -f "${SCRIPT_DIR}/mako/config" "${HOME}/.config/mako/config"
 ok "Mako themed"
+
+# NetworkManager dmenu (Wi‑Fi menu — swaybar tray clicks are a no-op)
+cp -f "${SCRIPT_DIR}/networkmanager-dmenu/config.ini" \
+  "${HOME}/.config/networkmanager-dmenu/config.ini"
+ok "networkmanager-dmenu themed (Mod+n)"
 
 # GTK theme + settings
 cp -a "${SCRIPT_DIR}/themes/SweetPotato" "${HOME}/.themes/"

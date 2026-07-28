@@ -23,6 +23,8 @@ Pick **FR** (AZERTY) or **US** (QWERTY) when asked. Re-login once so close butto
 |------|--------|
 | `Mod+Return` | Terminal (foot) |
 | `Mod+Space` | App launcher |
+| `Mod+n` | Wi‑Fi / NetworkManager |
+| `Mod+Shift+w` | Wallpaper selector |
 | `Mod+l` | Lock (swaylock) |
 | `Mod+o` | Power off |
 | `Mod+Shift+e` | Exit Sway |
@@ -35,6 +37,7 @@ Pick **FR** (AZERTY) or **US** (QWERTY) when asked. Re-login once so close butto
 - Sway configs (FR + US)
 - Charcoal GTK accents over Adwaita-dark
 - swaylock, foot, mako, Geany color scheme
+- Wi‑Fi menu via `networkmanager-dmenu` (`Mod+n`)
 - Firefox Save As fix (`xdg-desktop-portal-gtk` PATH)
 - Glycin SVG loader tweak for Papirus on low-RAM machines
 
