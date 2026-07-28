@@ -104,11 +104,6 @@ PACMAN_PKGS=(
   ly
 )
 
-# Optional base GTK theme (Archcraft ships it as archcraft-gtk-theme-arc)
-if ! pacman -Qq 2>/dev/null | grep -qiE '^(arc-gtk-theme|archcraft-gtk-theme-arc)$'; then
-  PACMAN_PKGS+=(arc-gtk-theme)
-fi
-
 # AUR packages (via yay)
 AUR_PKGS=(
   octopi
@@ -285,7 +280,7 @@ cp -f "${SCRIPT_DIR}/xdg-desktop-portal/sway-portals.conf" \
   "${HOME}/.config/xdg-desktop-portal/portals.conf"
 ok "xdg-desktop-portal FileChooser routed to gtk"
 
-# Portal-gtk needs a real PATH (Archcraft sets PATH to scripts-only → bwrap/glycin crash → Firefox Save As dead)
+# Portal-gtk needs a real PATH (broken session PATH → bwrap/glycin crash → Firefox Save As dead)
 mkdir -p "${HOME}/.config/systemd/user/xdg-desktop-portal-gtk.service.d"
 cp -f "${SCRIPT_DIR}/systemd/user/xdg-desktop-portal-gtk.service.d/override.conf" \
   "${HOME}/.config/systemd/user/xdg-desktop-portal-gtk.service.d/override.conf"
@@ -306,7 +301,7 @@ EOF
 fi
 
 
-# Restore GTK CSD (close buttons) — Archcraft forces gtk-nocsd in /etc/environment
+# Restore GTK CSD (close buttons) if a distro forced gtk-nocsd in /etc/environment
 mkdir -p "${HOME}/.config/environment.d" "${HOME}/.local/bin"
 sed "s|%HOME%|${HOME}|g" \
   "${SCRIPT_DIR}/environment.d/90-sweetpotato-csd.conf" \

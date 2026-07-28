@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # Apply SweetPotato GTK / icon / cursor theme to all channels apps actually read.
-# Prefer Adwaita-dark (neutral charcoal) over Arc-Dark (blue/Nord look).
+# Prefer Adwaita-dark (ships with GTK — no extra theme package).
 # Potato charcoal + accents live in ~/.config/gtk-3.0/gtk.css
 set -euo pipefail
 
@@ -9,7 +9,7 @@ pick_gtk_theme() {
     echo "${THEME}"
     return
   fi
-  for candidate in Adwaita-dark Adwaita Arc-Dark; do
+  for candidate in Adwaita-dark Adwaita; do
     if [[ -d "/usr/share/themes/${candidate}" ]] || [[ -d "${HOME}/.themes/${candidate}" ]]; then
       echo "${candidate}"
       return
