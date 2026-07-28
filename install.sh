@@ -4,8 +4,10 @@
 set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-WALLPAPER_SRC="${SCRIPT_DIR}/SweetPotato.png"
-WALLPAPER_DST="${HOME}/.local/share/backgrounds/SweetPotato.png"
+BACKGROUNDS_DIR="${SCRIPT_DIR}/backgrounds"
+WALLPAPER_DEFAULT="SPKeybinds.png"
+WALLPAPER_DST_DIR="${HOME}/.local/share/backgrounds"
+WALLPAPER_DST="${WALLPAPER_DST_DIR}/${WALLPAPER_DEFAULT}"
 
 RED='\033[0;31m'
 ORANGE='\033[0;33m'
@@ -100,6 +102,7 @@ PACMAN_PKGS=(
   # session helpers
   xorg-xwayland
   polkit-gnome
+  xfce-polkit
   wireless_tools
   libnotify
   # TUI login (replaces SDDM when enabled)
@@ -184,16 +187,20 @@ mkdir -p \
   "${HOME}/.local/share/backgrounds" \
   "${HOME}/Pictures/Screenshots"
 
-# Wallpaper
-if [[ -f "${WALLPAPER_SRC}" ]]; then
-  cp -f "${WALLPAPER_SRC}" "${WALLPAPER_DST}"
-  # Also drop a copy where stock sway backgrounds live (best-effort)
+# Wallpapers (default SPKeybinds + extras for Mod+Shift+w)
+mkdir -p "${WALLPAPER_DST_DIR}"
+if [[ -d "${BACKGROUNDS_DIR}" ]]; then
+  cp -f "${BACKGROUNDS_DIR}/"*.png "${WALLPAPER_DST_DIR}/"
   if [[ -d /usr/share/backgrounds/sway ]]; then
-    ${SUDO} cp -f "${WALLPAPER_SRC}" /usr/share/backgrounds/sway/SweetPotato.png || true
+    ${SUDO} cp -f "${BACKGROUNDS_DIR}/"*.png /usr/share/backgrounds/sway/ || true
   fi
-  ok "Wallpaper installed"
+  ok "Wallpapers installed (default: ${WALLPAPER_DEFAULT})"
+elif [[ -f "${SCRIPT_DIR}/SweetPotato.png" ]]; then
+  cp -f "${SCRIPT_DIR}/SweetPotato.png" "${WALLPAPER_DST_DIR}/SweetPotato.png"
+  WALLPAPER_DST="${WALLPAPER_DST_DIR}/SweetPotato.png"
+  ok "Wallpaper installed (legacy SweetPotato.png)"
 else
-  warn "Wallpaper missing: ${WALLPAPER_SRC}"
+  warn "No wallpapers found in ${BACKGROUNDS_DIR}"
 fi
 
 # Sway config (FR = config, US = config-us)
@@ -306,6 +313,22 @@ ok "Geany SweetPotato color scheme installed"
 # Mako notifications
 cp -f "${SCRIPT_DIR}/mako/config" "${HOME}/.config/mako/config"
 ok "Mako themed"
+
+# Polkit — allow wheel to manage disks (gnome-disks ISO restore on Sway)
+${SUDO} install -Dm644 "${SCRIPT_DIR}/polkit/49-sweetpotato-udisks.rules" \
+  /etc/polkit-1/rules.d/49-sweetpotato-udisks.rules
+${SUDO} systemctl restart polkit 2>/dev/null || true
+# Polkit agent (gnome preferred, xfce fallback — Archcraft / Sway)
+mkdir -p "${HOME}/.config/systemd/user"
+cp -f "${SCRIPT_DIR}/systemd/user/polkit-gnome-authentication-agent-1.service" \
+  "${HOME}/.config/systemd/user/polkit-gnome-authentication-agent-1.service"
+systemctl --user daemon-reload 2>/dev/null || true
+systemctl --user enable --now polkit-gnome-authentication-agent-1.service 2>/dev/null || true
+if ! id -nG "${USER}" 2>/dev/null | grep -qw wheel; then
+  ${SUDO} usermod -aG wheel "${USER}" 2>/dev/null || true
+  warn "Added ${USER} to wheel — re-login for disk permissions"
+fi
+ok "Polkit udisks rules installed (wheel can restore ISO to USB)"
 
 # NetworkManager dmenu (Wi‑Fi menu — swaybar tray clicks are a no-op)
 cp -f "${SCRIPT_DIR}/networkmanager-dmenu/config.ini" \

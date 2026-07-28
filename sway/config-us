@@ -25,7 +25,7 @@ set $editor geany
 ### Output configuration
 #
 # Default wallpaper; wallpaper.sh overwrites ~/.config/sway/wallpaper.conf
-output * bg ~/.local/share/backgrounds/SweetPotato.png fill
+output * bg ~/.local/share/backgrounds/SPKeybinds.png fill
 include ~/.config/sway/wallpaper.conf
 
 ### Idle configuration
@@ -234,8 +234,8 @@ bar {
     }
 }
 
-# Polkit agent for GUI privilege prompts
-exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+# Polkit agent for GUI privilege prompts (gnome or xfce)
+exec --no-startup-id sh -c '/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 || /usr/lib/xfce-polkit/xfce-polkit || /usr/lib/xfce4/xfce-polkit || true'
 # Apply GTK/icon/cursor theme (Thunar reads gsettings/xfconf/xsettingsd)
 exec ~/.config/sway/scripts/apply-theme.sh
 # Notifications, USB automount, tray applets

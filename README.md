@@ -2,8 +2,11 @@
 
 A light Sway arch-based setup and a theme to revive slow and old potatoes PCs
 
+<p align="center">
+  <img src="assets/SweetPotatOs.png" alt="SweetPotato" width="220">
+</p>
 
-![SweetPotato wallpaper](SweetPotato.png)
+Lightweight Sway theme for Arch-based systems.
 
 Colors: **#a73b50** potato red · **#f79b29** potato orange · **#1d1f21** charcoal
 
@@ -44,6 +47,7 @@ Pick **FR** (AZERTY) or **US** (QWERTY) when asked. Re-login once so close butto
 - Charcoal GTK accents over Adwaita-dark
 - swaylock, foot, mako, Geany color scheme
 - Wi‑Fi menu via `networkmanager-dmenu` (`Mod+n`)
+- Polkit udisks rules so Disks can write ISOs to USB on Sway
 - Firefox Save As fix (`xdg-desktop-portal-gtk` PATH)
 - Glycin SVG loader tweak for Papirus on low-RAM machines
 
