@@ -1,7 +1,7 @@
-# SweetPotato
+# SweetPotato, give the sweetness back to the potatoes
 
-Give the sweetness back to the potato, 
-a very Lightweight Sway theme for Arch-based systems for old and slow systems.
+A light Sway arch-based setup and a theme to revive slow and old potatoes PCs
+
 
 ![SweetPotato wallpaper](SweetPotato.png)
 
