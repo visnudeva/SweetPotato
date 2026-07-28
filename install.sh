@@ -85,6 +85,7 @@ PACMAN_PKGS=(
   wlsunset
   gammastep
   flatpak
+  bazaar
   # theming / fonts / icons / gtk
   gtk3
   gtk4
@@ -102,11 +103,6 @@ PACMAN_PKGS=(
   libnotify
   # TUI login (replaces SDDM when enabled)
   ly
-)
-
-# AUR packages (via yay)
-AUR_PKGS=(
-  octopi
 )
 
 echo
@@ -167,48 +163,6 @@ if ((${#INSTALL_PKGS[@]})); then
   ok "Pacman packages installed"
 else
   ok "All pacman packages already installed"
-fi
-
-# ----------------------------------------
-# Bootstrap yay if missing
-# ----------------------------------------
-ensure_yay() {
-  if need_cmd yay; then
-    ok "yay found"
-    return 0
-  fi
-
-  info "yay not found — bootstrapping from AUR..."
-  ${SUDO} pacman -S --needed --noconfirm base-devel git go
-
-  local tmp
-  tmp="$(mktemp -d)"
-  # shellcheck disable=SC2064
-  trap "rm -rf '${tmp}'" RETURN
-  git clone https://aur.archlinux.org/yay.git "${tmp}/yay"
-  (cd "${tmp}/yay" && makepkg -si --noconfirm)
-  ok "yay installed"
-}
-
-ensure_yay
-
-# ----------------------------------------
-# AUR packages
-# ----------------------------------------
-info "Installing AUR packages (octopi)..."
-AUR_INSTALL=()
-for pkg in "${AUR_PKGS[@]}"; do
-  if pacman -Q "${pkg}" >/dev/null 2>&1; then
-    continue
-  fi
-  AUR_INSTALL+=("${pkg}")
-done
-
-if ((${#AUR_INSTALL[@]})); then
-  yay -S --needed --noconfirm "${AUR_INSTALL[@]}"
-  ok "AUR packages installed"
-else
-  ok "All AUR packages already installed"
 fi
 
 # ----------------------------------------
