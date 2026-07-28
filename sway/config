@@ -210,6 +210,7 @@ bar {
     position top
     status_command ~/.config/sway/scripts/status.sh
     tray_padding 5
+    icon_theme Papirus-Dark
     font pango:Noto Sans 10
 
     colors {

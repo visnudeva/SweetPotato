@@ -25,7 +25,7 @@ set_kv animation none
 set_kv asterisk '*'
 set_kv bg 0x001d1f21
 set_kv blank_box true
-set_kv border_fg 0x00a73b50
+set_kv border_fg 0x00ffffff
 set_kv box_title null
 set_kv 'clock' '%H:%M'
 set_kv default_input login
@@ -34,5 +34,7 @@ set_kv error_fg 0x01a73b50
 set_kv fg 0x00f5e6e8
 set_kv full_color true
 set_kv save true
+set_kv shell false
+set_kv xinitrc null
 
 echo "SweetPotato Ly theme applied to ${CFG}"
