@@ -22,13 +22,18 @@ Pick **FR** (AZERTY) or **US** (QWERTY) when asked. Re-login once so close butto
 
 | Bind | Action |
 |------|--------|
-| `Mod+Return` | Terminal (foot) |
-| `Mod+Space` | App launcher |
 | `Mod+n` | Wi‑Fi / NetworkManager |
+| `Mod+Space` | App launcher |
+| `Mod+w` | Web browser (firefox) |
+| `Mod+f` | file manager (thunar) |
+| `Mod+e` | IDE (geany) |
+| `Mod+Return` | Terminal (foot) |
 | `Mod+Shift+w` | Wallpaper selector |
+| `Mod+q` | Kill focused window |
+| `Mod+number` | Change workspaces |
 | `Mod+l` | Lock (swaylock) |
-| `Mod+o` | Power off |
 | `Mod+Shift+e` | Exit Sway |
+| `Mod+o` | Power off |
 | `Mod+Shift+c` | Reload config |
 
 `Mod` is usually the Super/Windows key.
