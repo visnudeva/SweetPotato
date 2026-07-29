@@ -1,10 +1,16 @@
 # SweetPotato, give the sweetness back to the potatoes
 
-A light Sway arch-based setup and a theme to revive slow and old potatoes PCs
-
-<p align="center">
+<table>
+  <tr>
+    <td>
+      <strong>A light Sway arch-based setup and a theme to revive slow and old potatoes PCs
+<br>
+    </td>
+    <td>
   <img src="assets/SweetPotatOs.png" alt="SweetPotato" width="220">
-</p>
+</td>
+  </tr>
+</table>
 
 Lightweight Sway theme for Arch-based systems.
 
