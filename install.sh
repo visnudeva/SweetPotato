@@ -306,7 +306,7 @@ ok "CSD sway wrapper installed (~/.local/bin/sway)"
 cp -f "${SCRIPT_DIR}/foot/foot.ini" "${HOME}/.config/foot/foot.ini"
 ok "Foot themed"
 
-# Fastfetch — SPLogo (transparent PNG; foot uses sixel via type auto)
+# Fastfetch — SPLogo (chafa block art; reliable in foot and other terminals)
 mkdir -p "${HOME}/.config/fastfetch"
 cp -f "${SCRIPT_DIR}/fastfetch/config.jsonc" "${HOME}/.config/fastfetch/config.jsonc"
 cp -f "${SCRIPT_DIR}/fastfetch/SPLogo.png" "${HOME}/.config/fastfetch/SPLogo.png"
