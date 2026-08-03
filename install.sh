@@ -94,6 +94,7 @@ PACMAN_PKGS=(
   # theming / fonts / icons / gtk
   gtk3
   gtk4
+  gnome-themes-extra
   papirus-icon-theme
   capitaine-cursors
   xsettingsd
@@ -108,6 +109,7 @@ PACMAN_PKGS=(
   wireless_tools
   libnotify
   fastfetch
+  chafa
   # TUI login (replaces SDDM when enabled)
   ly
 )
@@ -181,6 +183,7 @@ mkdir -p \
   "${HOME}/.config/sway/scripts" \
   "${HOME}/.config/swaylock" \
   "${HOME}/.config/foot" \
+  "${HOME}/.config/fastfetch" \
   "${HOME}/.config/gtk-3.0" \
   "${HOME}/.config/gtk-4.0" \
   "${HOME}/.config/xsettingsd" \
@@ -224,6 +227,8 @@ cp -f "${SCRIPT_DIR}/sway/scripts/media.sh" "${HOME}/.config/sway/scripts/media.
 cp -f "${SCRIPT_DIR}/sway/scripts/applauncher.sh" "${HOME}/.config/sway/scripts/applauncher.sh"
 cp -f "${SCRIPT_DIR}/sway/scripts/wallpaper.sh" "${HOME}/.config/sway/scripts/wallpaper.sh"
 cp -f "${SCRIPT_DIR}/sway/scripts/record.sh" "${HOME}/.config/sway/scripts/record.sh"
+cp -f "${SCRIPT_DIR}/sway/scripts/screenshot.sh" "${HOME}/.config/sway/scripts/screenshot.sh"
+cp -f "${SCRIPT_DIR}/sway/scripts/ensure-wallpaper.sh" "${HOME}/.config/sway/scripts/ensure-wallpaper.sh"
 chmod +x \
   "${HOME}/.config/sway/scripts/status.sh" \
   "${HOME}/.config/sway/scripts/apply-theme.sh" \
@@ -232,7 +237,9 @@ chmod +x \
   "${HOME}/.config/sway/scripts/media.sh" \
   "${HOME}/.config/sway/scripts/applauncher.sh" \
   "${HOME}/.config/sway/scripts/wallpaper.sh" \
-  "${HOME}/.config/sway/scripts/record.sh"
+  "${HOME}/.config/sway/scripts/record.sh" \
+  "${HOME}/.config/sway/scripts/screenshot.sh" \
+  "${HOME}/.config/sway/scripts/ensure-wallpaper.sh"
 # Persist wallpaper choice (include file must exist for sway)
 if [[ ! -f "${HOME}/.config/sway/wallpaper.conf" ]]; then
   printf 'output * bg "%s" fill\n' "${WALLPAPER_DST}" \
@@ -298,6 +305,12 @@ ok "CSD sway wrapper installed (~/.local/bin/sway)"
 # Foot
 cp -f "${SCRIPT_DIR}/foot/foot.ini" "${HOME}/.config/foot/foot.ini"
 ok "Foot themed"
+
+# Fastfetch — SPLogo (transparent PNG; foot uses sixel via type auto)
+mkdir -p "${HOME}/.config/fastfetch"
+cp -f "${SCRIPT_DIR}/fastfetch/config.jsonc" "${HOME}/.config/fastfetch/config.jsonc"
+cp -f "${SCRIPT_DIR}/fastfetch/SPLogo.png" "${HOME}/.config/fastfetch/SPLogo.png"
+ok "Fastfetch logo (SPLogo) installed"
 
 # Geany — potato editor scheme (replaces Arc blue accents)
 mkdir -p "${HOME}/.config/geany/colorschemes"
