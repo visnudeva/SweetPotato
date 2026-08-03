@@ -38,6 +38,9 @@ Pick **FR** (AZERTY) or **US** (QWERTY) when asked. Re-login once so close butto
 | `Mod+e` | IDE (geany) |
 | `Mod+Return` | Terminal (foot) |
 | `Mod+Shift+w` | Wallpaper selector |
+| `Print` | Screenshot |
+| `Mod+Shift+Print` | Region screenshot |
+| `Mod+Print` | Screen record toggle (region + audio → `~/Videos`) |
 | `Mod+q` | Kill focused window |
 | `Mod+number` | Change workspaces |
 | `Mod+l` | Lock (swaylock) |

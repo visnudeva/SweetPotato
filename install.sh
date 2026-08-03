@@ -37,6 +37,7 @@ PACMAN_PKGS=(
   j4-dmenu-desktop
   grim
   slurp
+  wf-recorder
   wl-clipboard
   thunar
   thunar-volman
@@ -185,7 +186,8 @@ mkdir -p \
   "${HOME}/.config/networkmanager-dmenu" \
   "${HOME}/.themes" \
   "${HOME}/.local/share/backgrounds" \
-  "${HOME}/Pictures/Screenshots"
+  "${HOME}/Pictures/Screenshots" \
+  "${HOME}/Videos"
 
 # Wallpapers (default SPKeybinds + extras for Mod+Shift+w)
 mkdir -p "${WALLPAPER_DST_DIR}"
@@ -219,6 +221,7 @@ cp -f "${SCRIPT_DIR}/sway/scripts/brightness.sh" "${HOME}/.config/sway/scripts/b
 cp -f "${SCRIPT_DIR}/sway/scripts/media.sh" "${HOME}/.config/sway/scripts/media.sh"
 cp -f "${SCRIPT_DIR}/sway/scripts/applauncher.sh" "${HOME}/.config/sway/scripts/applauncher.sh"
 cp -f "${SCRIPT_DIR}/sway/scripts/wallpaper.sh" "${HOME}/.config/sway/scripts/wallpaper.sh"
+cp -f "${SCRIPT_DIR}/sway/scripts/record.sh" "${HOME}/.config/sway/scripts/record.sh"
 chmod +x \
   "${HOME}/.config/sway/scripts/status.sh" \
   "${HOME}/.config/sway/scripts/apply-theme.sh" \
@@ -226,7 +229,8 @@ chmod +x \
   "${HOME}/.config/sway/scripts/brightness.sh" \
   "${HOME}/.config/sway/scripts/media.sh" \
   "${HOME}/.config/sway/scripts/applauncher.sh" \
-  "${HOME}/.config/sway/scripts/wallpaper.sh"
+  "${HOME}/.config/sway/scripts/wallpaper.sh" \
+  "${HOME}/.config/sway/scripts/record.sh"
 # Persist wallpaper choice (include file must exist for sway)
 if [[ ! -f "${HOME}/.config/sway/wallpaper.conf" ]]; then
   printf 'output * bg "%s" fill\n' "${WALLPAPER_DST}" \
