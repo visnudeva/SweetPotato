@@ -35,6 +35,7 @@ PACMAN_PKGS=(
   foot
   wmenu
   j4-dmenu-desktop
+  jq
   grim
   slurp
   wf-recorder
@@ -106,6 +107,7 @@ PACMAN_PKGS=(
   xfce-polkit
   wireless_tools
   libnotify
+  fastfetch
   # TUI login (replaces SDDM when enabled)
   ly
 )
