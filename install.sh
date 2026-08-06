@@ -306,15 +306,13 @@ ok "CSD sway wrapper installed (~/.local/bin/sway)"
 cp -f "${SCRIPT_DIR}/foot/foot.ini" "${HOME}/.config/foot/foot.ini"
 ok "Foot themed"
 
-# Fastfetch — pre-rendered ASCII logo (no ImageMagick needed at runtime)
+# Fastfetch — chafa renders SPLogo.png (works in foot/kitty without system paths)
 mkdir -p "${HOME}/.config/fastfetch"
 cp -f "${SCRIPT_DIR}/fastfetch/config.jsonc" "${HOME}/.config/fastfetch/config.jsonc"
 cp -f "${SCRIPT_DIR}/fastfetch/SPLogo.png" "${HOME}/.config/fastfetch/SPLogo.png"
-cp -f "${SCRIPT_DIR}/fastfetch/SPLogo.asc" "${HOME}/.config/fastfetch/SPLogo.asc"
-${SUDO} install -Dm644 "${SCRIPT_DIR}/fastfetch/SPLogo.asc" \
-  /usr/local/share/sweetpotatoos/SPLogo.asc
+cp -f "${SCRIPT_DIR}/fastfetch/SPLogo.asc" "${HOME}/.config/fastfetch/SPLogo.asc" 2>/dev/null || true
 ${SUDO} install -Dm644 "${SCRIPT_DIR}/fastfetch/SPLogo.png" \
-  /usr/local/share/sweetpotatoos/SPLogo.png
+  /usr/local/share/sweetpotatos/SPLogo.png
 ok "Fastfetch logo (SPLogo) installed"
 
 # Geany — potato editor scheme (replaces Arc blue accents)
