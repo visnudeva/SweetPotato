@@ -44,6 +44,7 @@ Pick **FR** (AZERTY) or **US** (QWERTY) when asked. Re-login once so close butto
 | `Mod+q` | Kill focused window |
 | `Mod+number` | Change workspaces |
 | `Mod+l` | Lock (swaylock) |
+| `Mod+c` | Caffeine toggle (no sleep / idle lock) |
 | `Mod+Shift+e` | Exit Sway |
 | `Mod+o` | Power off |
 | `Mod+Shift+c` | Reload config |

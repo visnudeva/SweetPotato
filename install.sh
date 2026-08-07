@@ -229,6 +229,7 @@ cp -f "${SCRIPT_DIR}/sway/scripts/wallpaper.sh" "${HOME}/.config/sway/scripts/wa
 cp -f "${SCRIPT_DIR}/sway/scripts/record.sh" "${HOME}/.config/sway/scripts/record.sh"
 cp -f "${SCRIPT_DIR}/sway/scripts/screenshot.sh" "${HOME}/.config/sway/scripts/screenshot.sh"
 cp -f "${SCRIPT_DIR}/sway/scripts/ensure-wallpaper.sh" "${HOME}/.config/sway/scripts/ensure-wallpaper.sh"
+cp -f "${SCRIPT_DIR}/sway/scripts/caffeine.sh" "${HOME}/.config/sway/scripts/caffeine.sh"
 chmod +x \
   "${HOME}/.config/sway/scripts/status.sh" \
   "${HOME}/.config/sway/scripts/apply-theme.sh" \
@@ -239,7 +240,8 @@ chmod +x \
   "${HOME}/.config/sway/scripts/wallpaper.sh" \
   "${HOME}/.config/sway/scripts/record.sh" \
   "${HOME}/.config/sway/scripts/screenshot.sh" \
-  "${HOME}/.config/sway/scripts/ensure-wallpaper.sh"
+  "${HOME}/.config/sway/scripts/ensure-wallpaper.sh" \
+  "${HOME}/.config/sway/scripts/caffeine.sh"
 # Persist wallpaper choice (include file must exist for sway)
 if [[ ! -f "${HOME}/.config/sway/wallpaper.conf" ]]; then
   printf 'output * bg "%s" fill\n' "${WALLPAPER_DST}" \
