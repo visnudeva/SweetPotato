@@ -1,5 +1,10 @@
 # SweetPotato, give the sweetness back to the potatoes
 
+<p align="center">
+  <img src="assets/UsefulBinds.png" alt="SweetPotato useful keybinds" width="920"
+       style="border-radius: 12px; max-width: 100%; height: auto;">
+</p>
+
 <table>
   <tr>
     <td>
