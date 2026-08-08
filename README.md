@@ -17,10 +17,6 @@
   </tr>
 </table>
 
-Lightweight Sway theme for Arch-based systems.
-
-Colors: **#a73b50** potato red · **#f79b29** potato orange · **#1d1f21** charcoal
-
 ## Install
 
 ```bash
