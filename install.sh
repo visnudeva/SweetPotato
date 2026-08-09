@@ -308,14 +308,22 @@ ok "CSD sway wrapper installed (~/.local/bin/sway)"
 cp -f "${SCRIPT_DIR}/foot/foot.ini" "${HOME}/.config/foot/foot.ini"
 ok "Foot themed"
 
-# Fastfetch — chafa renders SPLogo.png (works in foot/kitty without system paths)
+# Fastfetch — ASCII SPLogo (chafa/PNG needs cell pixel size; falls back to Arch otherwise)
 mkdir -p "${HOME}/.config/fastfetch"
 cp -f "${SCRIPT_DIR}/fastfetch/config.jsonc" "${HOME}/.config/fastfetch/config.jsonc"
 cp -f "${SCRIPT_DIR}/fastfetch/SPLogo.png" "${HOME}/.config/fastfetch/SPLogo.png"
-cp -f "${SCRIPT_DIR}/fastfetch/SPLogo.asc" "${HOME}/.config/fastfetch/SPLogo.asc" 2>/dev/null || true
+cp -f "${SCRIPT_DIR}/fastfetch/SPLogo.asc" "${HOME}/.config/fastfetch/SPLogo.asc"
 ${SUDO} install -Dm644 "${SCRIPT_DIR}/fastfetch/SPLogo.png" \
   /usr/local/share/sweetpotatos/SPLogo.png
+${SUDO} install -Dm644 "${SCRIPT_DIR}/fastfetch/SPLogo.asc" \
+  /usr/local/share/sweetpotatos/SPLogo.asc
 ok "Fastfetch logo (SPLogo) installed"
+
+# Lid close → suspend (logind)
+${SUDO} install -Dm644 "${SCRIPT_DIR}/systemd/logind.conf.d/lid-sleep.conf" \
+  /etc/systemd/logind.conf.d/50-sweetpotato-lid-sleep.conf
+${SUDO} systemctl restart systemd-logind 2>/dev/null || true
+ok "Lid close suspend enabled (logind)"
 
 # Geany — potato editor scheme (replaces Arc blue accents)
 mkdir -p "${HOME}/.config/geany/colorschemes"
