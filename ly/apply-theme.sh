@@ -36,5 +36,7 @@ set_kv full_color true
 set_kv save true
 set_kv shell false
 set_kv xinitrc null
+set_kv waylandsessions /etc/ly/wayland-sessions
+set_kv xsessions null
 
 echo "SweetPotato Ly theme applied to ${CFG}"

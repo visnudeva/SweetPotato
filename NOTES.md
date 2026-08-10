@@ -27,6 +27,7 @@ Desktop theme + installer for Arch-based systems. The ISO that ships this theme 
 ## Swirl
 
 - Layout block + `scripts/autotile.lua` require Swirl (stock Sway will reject those commands).
-- CSD wrappers: `bin/swirl` (and `bin/sway` → swirl) for `~/.local/bin`.
-- Session desktop: `wayland-sessions/swirl.desktop`.
+- CSD wrappers: `bin/swirl` for `~/.local/bin`.
+- Session desktop: `wayland-sessions/swirl.desktop` (+ Ly curated `/etc/ly/wayland-sessions`).
+- Stock `sway.desktop` is removed on install; the Arch `sway` package stays only for swaybar/swaymsg/swaynag.
 - `install.sh` installs the `sway` package for tools, then installs `swirl` from pacman if available, else builds from GitHub into `/usr/local`.

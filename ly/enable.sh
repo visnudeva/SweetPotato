@@ -14,10 +14,17 @@ if [[ -f "${SCRIPT_DIR}/config.ini" ]]; then
   cp -f "${SCRIPT_DIR}/config.ini" /etc/ly/config.ini
 fi
 
+# Theme + Swirl-only session list
+bash "${SCRIPT_DIR}/apply-theme.sh" /etc/ly/config.ini
+mkdir -p /etc/ly/wayland-sessions
+install -Dm644 "${SCRIPT_DIR}/wayland-sessions/swirl.desktop" \
+  /etc/ly/wayland-sessions/swirl.desktop
+rm -f /usr/share/wayland-sessions/sway.desktop
+
 systemctl disable sddm.service 2>/dev/null || true
 systemctl enable ly@tty2.service
 
 echo
 echo "Ly is enabled on tty2 with SweetPotato colors."
-echo "Reboot to see the login screen. Pick the Swirl session."
+echo "Reboot — Swirl is the only / default Wayland session."
 echo

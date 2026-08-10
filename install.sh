@@ -27,7 +27,7 @@ need_cmd() {
 # Official-repo packages (sway for swaybar/swaymsg/swaynag; swirl is separate)
 # ----------------------------------------
 PACMAN_PKGS=(
-  # compositor tooling (bar / IPC / nag come from the sway package)
+  # tooling only — bar/IPC/nag from sway package; compositor is swirl (sway.desktop removed)
   sway
   swaybg
   swayidle
@@ -333,11 +333,20 @@ sed "s|%HOME%|${HOME}|g" \
   "${SCRIPT_DIR}/environment.d/90-sweetpotato-csd.conf" \
   > "${HOME}/.config/environment.d/90-sweetpotato-csd.conf"
 cp -f "${SCRIPT_DIR}/bin/swirl" "${HOME}/.local/bin/swirl"
-cp -f "${SCRIPT_DIR}/bin/sway" "${HOME}/.local/bin/sway"
-chmod +x "${HOME}/.local/bin/swirl" "${HOME}/.local/bin/sway"
+chmod +x "${HOME}/.local/bin/swirl"
+rm -f "${HOME}/.local/bin/sway"
 mkdir -p "${HOME}/.local/share/wayland-sessions"
 cp -f "${SCRIPT_DIR}/wayland-sessions/swirl.desktop" \
   "${HOME}/.local/share/wayland-sessions/swirl.desktop"
+# Drop stock Sway session; Ly only lists curated Swirl
+${SUDO} rm -f /usr/share/wayland-sessions/sway.desktop
+${SUDO} mkdir -p /etc/ly/wayland-sessions
+${SUDO} install -Dm644 "${SCRIPT_DIR}/ly/wayland-sessions/swirl.desktop" \
+  /etc/ly/wayland-sessions/swirl.desktop
+if [[ -f /usr/share/wayland-sessions/swirl.desktop ]]; then
+  ${SUDO} install -Dm644 /usr/share/wayland-sessions/swirl.desktop \
+    /etc/ly/wayland-sessions/swirl.desktop
+fi
 if [[ -f /etc/environment ]] && grep -q '^LD_PRELOAD=/usr/lib/libgtk-nocsd.so' /etc/environment; then
   ${SUDO} sed -i \
     's|^LD_PRELOAD=/usr/lib/libgtk-nocsd.so|# LD_PRELOAD=/usr/lib/libgtk-nocsd.so  # disabled by SweetPotato (close buttons)|' \
@@ -459,12 +468,17 @@ if pacman -Q ly >/dev/null 2>&1; then
     ${SUDO} cp -f "${SCRIPT_DIR}/ly/config.ini" /etc/ly/config.ini
     ok "Ly themed (charcoal + potato red)"
   fi
+  ${SUDO} bash "${SCRIPT_DIR}/ly/apply-theme.sh" /etc/ly/config.ini
+  ${SUDO} mkdir -p /etc/ly/wayland-sessions
+  ${SUDO} install -Dm644 "${SCRIPT_DIR}/ly/wayland-sessions/swirl.desktop" \
+    /etc/ly/wayland-sessions/swirl.desktop
+  ${SUDO} rm -f /usr/share/wayland-sessions/sway.desktop
   # Enable Ly on tty2; disable SDDM if present (takes effect on next boot)
   if systemctl list-unit-files sddm.service >/dev/null 2>&1; then
     ${SUDO} systemctl disable sddm.service 2>/dev/null || true
   fi
   ${SUDO} systemctl enable ly@tty2.service 2>/dev/null || true
-  ok "Ly enabled on tty2 (reboot to use the login screen)"
+  ok "Ly enabled on tty2 — Swirl is the default session"
 else
   warn "ly not installed — skip login screen setup"
 fi
@@ -478,7 +492,7 @@ echo
 echo "  Reload swirl:  Mod+Shift+c"
 echo "  Lock screen:   Mod+l"
 echo "  App menu:      Mod+Space"
-echo "  Login screen:  Ly (reboot after install) — select Swirl session"
+echo "  Login screen:  Ly (reboot after install) — Swirl is the default session"
 echo "  Switch layout later:"
 echo "    cp ~/.config/sway/config-fr ~/.config/sway/config   # French"
 echo "    cp ~/.config/sway/config-us ~/.config/sway/config   # US"
