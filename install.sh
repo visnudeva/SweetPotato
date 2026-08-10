@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
-# SweetPotato — Sway theme installer for Arch-based distros
+# SweetPotato — Swirl theme installer for Arch-based distros
+# Compositor: swirl (https://github.com/visnudeva/swirl). Tools: stock swaybar/swaymsg/swaynag.
 # Colors: #a73b50 (potato red) · #f79b29 (potato orange)
 set -euo pipefail
 
@@ -23,14 +24,15 @@ need_cmd() {
 }
 
 # ----------------------------------------
-# Official-repo packages (no swayfx)
+# Official-repo packages (sway for swaybar/swaymsg/swaynag; swirl is separate)
 # ----------------------------------------
 PACMAN_PKGS=(
-  # compositor stack
+  # compositor tooling (bar / IPC / nag come from the sway package)
   sway
   swaybg
   swayidle
   swaylock
+  lua
   # apps / tools used by config
   foot
   wmenu
@@ -78,7 +80,7 @@ PACMAN_PKGS=(
   blueman
   bluez
   bluez-utils
-  # desktop essentials often forgotten on sway
+  # desktop essentials often forgotten on Wayland
   mako
   udiskie
   mousepad
@@ -116,7 +118,7 @@ PACMAN_PKGS=(
 
 echo
 echo -e "${RED}  SweetPotato${NC} ${ORANGE}installer${NC}"
-echo "  Lightweight Sway theme for Arch-based systems"
+echo "  Lightweight Swirl theme for Arch-based systems"
 echo
 
 # ----------------------------------------
@@ -158,7 +160,7 @@ info "Installing packages with pacman..."
 INSTALL_PKGS=()
 for pkg in "${PACMAN_PKGS[@]}"; do
   if [[ "${pkg}" == "sway" ]] && pacman -Q sway >/dev/null 2>&1; then
-    info "sway already present ($(pacman -Q sway)) — skipping package install"
+    info "sway already present ($(pacman -Q sway)) — keeping for swaybar/swaymsg/swaynag"
     continue
   fi
   if pacman -Q "${pkg}" >/dev/null 2>&1; then
@@ -173,6 +175,44 @@ if ((${#INSTALL_PKGS[@]})); then
 else
   ok "All pacman packages already installed"
 fi
+
+# ----------------------------------------
+# Swirl compositor (not in official repos)
+# ----------------------------------------
+install_swirl() {
+  if need_cmd swirl || [[ -x /usr/bin/swirl ]] || [[ -x /usr/local/bin/swirl ]]; then
+    ok "swirl already installed ($(command -v swirl 2>/dev/null || echo /usr/local/bin/swirl))"
+    return 0
+  fi
+  if pacman -Ss '^swirl$' 2>/dev/null | grep -q '^[^ ]*/swirl '; then
+    info "Installing swirl from pacman..."
+    ${SUDO} pacman -S --needed --noconfirm swirl
+    ok "swirl package installed"
+    return 0
+  fi
+  info "Building swirl from source into /usr/local..."
+  local build_dir="${TMPDIR:-/tmp}/sweetpotato-swirl-build"
+  ${SUDO} pacman -S --needed --noconfirm meson ninja gcc pkgconf wayland-protocols \
+    wlroots json-c pango cairo gdk-pixbuf2 pcre2 libevdev lua scdoc 2>/dev/null || true
+  rm -rf "${build_dir}"
+  git clone --depth 1 https://github.com/visnudeva/swirl.git "${build_dir}/src"
+  meson setup "${build_dir}/build" "${build_dir}/src" \
+    --prefix=/usr/local \
+    -D sd-bus-provider=libsystemd \
+    -D werror=false \
+    -D b_ndebug=true \
+    -D scrollbar=false \
+    -D scrollnag=false \
+    -D swaymsg=false
+  ninja -C "${build_dir}/build"
+  ${SUDO} ninja -C "${build_dir}/build" install
+  ${SUDO} mkdir -p /usr/local/share/wayland-sessions
+  ${SUDO} install -Dm644 "${SCRIPT_DIR}/wayland-sessions/swirl.desktop" \
+    /usr/local/share/wayland-sessions/swirl.desktop
+  rm -rf "${build_dir}"
+  ok "swirl installed to /usr/local"
+}
+install_swirl
 
 # ----------------------------------------
 # Deploy configs
@@ -230,6 +270,7 @@ cp -f "${SCRIPT_DIR}/sway/scripts/record.sh" "${HOME}/.config/sway/scripts/recor
 cp -f "${SCRIPT_DIR}/sway/scripts/screenshot.sh" "${HOME}/.config/sway/scripts/screenshot.sh"
 cp -f "${SCRIPT_DIR}/sway/scripts/ensure-wallpaper.sh" "${HOME}/.config/sway/scripts/ensure-wallpaper.sh"
 cp -f "${SCRIPT_DIR}/sway/scripts/caffeine.sh" "${HOME}/.config/sway/scripts/caffeine.sh"
+cp -f "${SCRIPT_DIR}/sway/scripts/autotile.lua" "${HOME}/.config/sway/scripts/autotile.lua"
 chmod +x \
   "${HOME}/.config/sway/scripts/status.sh" \
   "${HOME}/.config/sway/scripts/apply-theme.sh" \
@@ -247,7 +288,7 @@ if [[ ! -f "${HOME}/.config/sway/wallpaper.conf" ]]; then
   printf 'output * bg "%s" fill\n' "${WALLPAPER_DST}" \
     > "${HOME}/.config/sway/wallpaper.conf"
 fi
-ok "Sway config (${KB_LAYOUT}) installed"
+ok "Swirl config (${KB_LAYOUT}) installed (~/.config/sway)"
 
 # Swaylock — plain dark grey, large indicator (no background image)
 cp -f "${SCRIPT_DIR}/swaylock/config" "${HOME}/.config/swaylock/config"
@@ -291,8 +332,12 @@ mkdir -p "${HOME}/.config/environment.d" "${HOME}/.local/bin"
 sed "s|%HOME%|${HOME}|g" \
   "${SCRIPT_DIR}/environment.d/90-sweetpotato-csd.conf" \
   > "${HOME}/.config/environment.d/90-sweetpotato-csd.conf"
+cp -f "${SCRIPT_DIR}/bin/swirl" "${HOME}/.local/bin/swirl"
 cp -f "${SCRIPT_DIR}/bin/sway" "${HOME}/.local/bin/sway"
-chmod +x "${HOME}/.local/bin/sway"
+chmod +x "${HOME}/.local/bin/swirl" "${HOME}/.local/bin/sway"
+mkdir -p "${HOME}/.local/share/wayland-sessions"
+cp -f "${SCRIPT_DIR}/wayland-sessions/swirl.desktop" \
+  "${HOME}/.local/share/wayland-sessions/swirl.desktop"
 if [[ -f /etc/environment ]] && grep -q '^LD_PRELOAD=/usr/lib/libgtk-nocsd.so' /etc/environment; then
   ${SUDO} sed -i \
     's|^LD_PRELOAD=/usr/lib/libgtk-nocsd.so|# LD_PRELOAD=/usr/lib/libgtk-nocsd.so  # disabled by SweetPotato (close buttons)|' \
@@ -301,7 +346,7 @@ if [[ -f /etc/environment ]] && grep -q '^LD_PRELOAD=/usr/lib/libgtk-nocsd.so' /
 else
   ok "gtk-nocsd already disabled or absent"
 fi
-ok "CSD sway wrapper installed (~/.local/bin/sway)"
+ok "CSD swirl wrapper installed (~/.local/bin/swirl)"
 
 
 # Foot
@@ -346,7 +391,7 @@ ok "Geany SweetPotato color scheme installed"
 cp -f "${SCRIPT_DIR}/mako/config" "${HOME}/.config/mako/config"
 ok "Mako themed"
 
-# Polkit — allow wheel to manage disks (gnome-disks ISO restore on Sway)
+# Polkit — allow wheel to manage disks (gnome-disks ISO restore on Swirl)
 ${SUDO} install -Dm644 "${SCRIPT_DIR}/polkit/49-sweetpotato-udisks.rules" \
   /etc/polkit-1/rules.d/49-sweetpotato-udisks.rules
 ${SUDO} systemctl restart polkit 2>/dev/null || true
@@ -430,10 +475,10 @@ systemctl --user enable --now pipewire pipewire-pulse wireplumber 2>/dev/null ||
 echo
 ok "SweetPotato install complete."
 echo
-echo "  Reload sway:   Mod+Shift+c"
+echo "  Reload swirl:  Mod+Shift+c"
 echo "  Lock screen:   Mod+l"
 echo "  App menu:      Mod+Space"
-echo "  Login screen:  Ly (reboot after install) — select Sway session"
+echo "  Login screen:  Ly (reboot after install) — select Swirl session"
 echo "  Switch layout later:"
 echo "    cp ~/.config/sway/config-fr ~/.config/sway/config   # French"
 echo "    cp ~/.config/sway/config-us ~/.config/sway/config   # US"

@@ -4,7 +4,8 @@ Desktop theme + installer for Arch-based systems. The ISO that ships this theme 
 
 ## Role
 
-- Source of truth for: sway, gtk, foot, mako, swaylock, fastfetch, wallpapers, GTK theme, `install.sh`.
+- Source of truth for: **Swirl** compositor config (still under `~/.config/sway/`), gtk, foot, mako, swaylock, fastfetch, wallpapers, GTK theme, `install.sh`.
+- Compositor binary is **swirl**; bar / IPC / nag stay stock **swaybar** / **swaymsg** / **swaynag** (from the Arch `sway` package).
 - SweetPotatOs runs `sync-theme.sh` to mirror these files into the live ISO airootfs.
 
 ## Fastfetch
@@ -21,4 +22,11 @@ Desktop theme + installer for Arch-based systems. The ISO that ships this theme 
 ## Caffeine
 
 - `sway/scripts/caffeine.sh`: idle inhibit only; lid suspend stays enabled.
-- Live ISO turns caffeine on by default (injected in SweetPotatOs sync); installed systems follow this repo’s sway config.
+- Live ISO turns caffeine on by default (injected in SweetPotatOs sync); installed systems follow this repo’s sway/Swirl config.
+
+## Swirl
+
+- Layout block + `scripts/autotile.lua` require Swirl (stock Sway will reject those commands).
+- CSD wrappers: `bin/swirl` (and `bin/sway` → swirl) for `~/.local/bin`.
+- Session desktop: `wayland-sessions/swirl.desktop`.
+- `install.sh` installs the `sway` package for tools, then installs `swirl` from pacman if available, else builds from GitHub into `/usr/local`.

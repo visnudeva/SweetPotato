@@ -8,7 +8,7 @@
 <table>
   <tr>
     <td>
-      <strong>A light Sway arch-based setup and a theme to revive slow and old potatoes PCs
+      <strong>A light Swirl arch-based setup and a theme to revive slow and old potatoes PCs
 <br>
     </td>
     <td>
@@ -44,9 +44,9 @@ Pick **FR** (AZERTY) or **US** (QWERTY) when asked. Re-login once so close butto
 | `Mod+Print` | Screen record toggle (region + audio → `~/Videos`) |
 | `Mod+q` | Kill focused window |
 | `Mod+number` | Change workspaces |
-| `Mod+l` | Lock (swaylock) |
+| `Mod+l` | Lock screen |
 | `Mod+c` | Caffeine toggle (no sleep / idle lock) |
-| `Mod+Shift+e` | Exit Sway |
+| `Mod+Shift+e` | Exit Swirl |
 | `Mod+o` | Power off |
 | `Mod+Shift+c` | Reload config |
 
@@ -54,13 +54,22 @@ Pick **FR** (AZERTY) or **US** (QWERTY) when asked. Re-login once so close butto
 
 ## What’s included
 
-- Sway configs (FR + US)
+- Swirl compositor configs (FR + US) — scrolling columns + autotile  
+  (lives in `~/.config/sway/` for compatibility with Swirl’s Sway-style config path)
+- Status bar / IPC / nag via system tools (`swaybar`, `swaymsg`, `swaynag`)
 - Charcoal GTK accents over Adwaita-dark
-- swaylock, foot, mako, Geany color scheme
+- Screen lock, foot, mako, Geany color scheme
 - Wi‑Fi menu via `networkmanager-dmenu` (`Mod+n`)
-- Polkit udisks rules so Disks can write ISOs to USB on Sway
+- Polkit udisks rules so Disks can write ISOs to USB on Swirl
 - Firefox Save As fix (`xdg-desktop-portal-gtk` PATH)
 - Glycin SVG loader tweak for Papirus on low-RAM machines
+
+### Gestures
+
+| Gesture | Action |
+|---------|--------|
+| 3-finger left / right | Scroll the window strip |
+| 4-finger up / down | Next / previous workspace |
 
 ## Switch keyboard layout later
 

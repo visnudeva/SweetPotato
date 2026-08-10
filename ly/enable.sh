@@ -19,5 +19,5 @@ systemctl enable ly@tty2.service
 
 echo
 echo "Ly is enabled on tty2 with SweetPotato colors."
-echo "Reboot to see the login screen. Pick the Sway session."
+echo "Reboot to see the login screen. Pick the Swirl session."
 echo

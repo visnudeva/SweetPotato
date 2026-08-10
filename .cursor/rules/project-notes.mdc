@@ -8,5 +8,6 @@ alwaysApply: true
 Read `NOTES.md`. For ISO/build/SourceForge details, also read `../SweetPotatOs/NOTES.md` when that sibling repo is present.
 
 - This repo is the theme source of truth; SweetPotatOs copies from here via `sync-theme.sh`.
+- Compositor is **Swirl** (config under `sway/`, tools are stock swaybar/swaymsg/swaynag).
 - Fastfetch: ASCII `SPLogo.asc` only as primary logo (not chafa/PNG).
 - Lid suspend via logind drop-in; caffeine must not block lid close.
