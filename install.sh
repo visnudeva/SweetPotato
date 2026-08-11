@@ -112,7 +112,7 @@ PACMAN_PKGS=(
   libnotify
   fastfetch
   chafa
-  # TUI login (replaces SDDM when enabled)
+  # TUI login
   ly
 )
 
