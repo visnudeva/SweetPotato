@@ -1,4 +1,4 @@
-# SweetPotato, give the sweetness back to the potatoes
+# SweetPotato, bring the sweetness back to the potatoes
 
 <p align="center">
   <img src="assets/Screenshot.png" alt="SweetPotato desktop" width="920"
