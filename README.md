@@ -52,6 +52,22 @@ Pick **FR** (AZERTY) or **US** (QWERTY) when asked. Re-login once so close butto
 
 `Mod` is usually the Super/Windows key.
 
+## Default apps
+
+| Role | App |
+|------|-----|
+| Browser | Firefox |
+| Files | Thunar |
+| Editor | Geany |
+| Terminal | foot |
+| Video | mpv |
+| Image edit | GIMP |
+| Music | Audacious |
+| PDF | mupdf |
+| Images | swayimg |
+| Flatpaks | Bazaar (+ flatpak) |
+| Disks | GNOME Disks |
+
 ## What’s included
 
 - Swirl compositor configs (FR + US) — scrolling columns + autotile  
