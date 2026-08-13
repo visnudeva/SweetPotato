@@ -24,6 +24,11 @@ Desktop theme + installer for Arch-based systems. The ISO that ships this theme 
 - `sway/scripts/caffeine.sh`: idle inhibit only; lid suspend stays enabled.
 - Live ISO turns caffeine on by default (injected in SweetPotatOs sync); installed systems follow this repo’s sway/Swirl config.
 
+## FSB100
+
+- `sway/scripts/fsb100.sh`: when a fullscreen media window is focused (mpv/vlc/firefox/… or a media-ish title), set backlight to 100% and restore the previous level on exit.
+- On by default (`exec fsb100.sh on`). Toggle with **Mod+Shift+b**. Laptop backlight via `brightnessctl` only.
+
 ## Swirl
 
 - Layout block + `scripts/autotile.lua` require Swirl (stock Sway will reject those commands).
