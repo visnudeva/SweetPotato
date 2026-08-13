@@ -34,6 +34,7 @@ PACMAN_PKGS=(
   swaylock
   lua
   # apps / tools used by config
+  kitty
   foot
   wmenu
   j4-dmenu-desktop
@@ -223,6 +224,7 @@ mkdir -p \
   "${HOME}/.config/sway/scripts" \
   "${HOME}/.config/swaylock" \
   "${HOME}/.config/foot" \
+  "${HOME}/.config/kitty" \
   "${HOME}/.config/fastfetch" \
   "${HOME}/.config/gtk-3.0" \
   "${HOME}/.config/gtk-4.0" \
@@ -360,7 +362,9 @@ fi
 ok "CSD swirl wrapper installed (~/.local/bin/swirl)"
 
 
-# Foot
+# Kitty (default terminal) + foot (optional)
+cp -f "${SCRIPT_DIR}/kitty/kitty.conf" "${HOME}/.config/kitty/kitty.conf"
+ok "Kitty themed (cursor trail + transparency)"
 cp -f "${SCRIPT_DIR}/foot/foot.ini" "${HOME}/.config/foot/foot.ini"
 ok "Foot themed"
 

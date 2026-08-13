@@ -39,7 +39,7 @@ Pick **FR** (AZERTY) or **US** (QWERTY) when asked. Re-login once so close butto
 | `Mod+w` | Web browser (firefox) |
 | `Mod+f` | file manager (thunar) |
 | `Mod+e` | IDE (geany) |
-| `Mod+Return` | Terminal (foot) |
+| `Mod+Return` | Terminal (kitty) |
 | `Mod+Shift+w` | Wallpaper selector |
 | `Print` | Screenshot → `~/Pictures/Screenshots` (+ clipboard) |
 | `Mod+Shift+Print` | Region screenshot |
@@ -62,7 +62,7 @@ Pick **FR** (AZERTY) or **US** (QWERTY) when asked. Re-login once so close butto
 | Browser | Firefox |
 | Files | Thunar |
 | Editor | Geany |
-| Terminal | foot |
+| Terminal | kitty |
 | Video | mpv |
 | Image edit | GIMP |
 | Music | Audacious |
@@ -77,7 +77,7 @@ Pick **FR** (AZERTY) or **US** (QWERTY) when asked. Re-login once so close butto
   (lives in `~/.config/sway/` for compatibility with Swirl’s Sway-style config path)
 - Status bar / IPC / nag via system tools (`swaybar`, `swaymsg`, `swaynag`)
 - Charcoal GTK accents over Adwaita-dark
-- Screen lock, foot, mako, Geany color scheme
+- Screen lock, kitty (trail + transparency), mako, Geany color scheme
 - Wi‑Fi menu via `networkmanager-dmenu` (`Mod+n`)
 - FSB100: fullscreen players/browsers jump to max backlight, then restore (`Mod+Shift+b`)
 - Polkit udisks rules so Disks can write ISOs to USB on Swirl

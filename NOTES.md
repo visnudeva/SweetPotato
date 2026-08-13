@@ -4,7 +4,9 @@ Desktop theme + installer for Arch-based systems. The ISO that ships this theme 
 
 ## Role
 
-- Source of truth for: **Swirl** compositor config (still under `~/.config/sway/`), gtk, foot, mako, swaylock, fastfetch, wallpapers, GTK theme, `install.sh`.
+- Source of truth for: **Swirl** compositor config (still under `~/.config/sway/`), gtk, **kitty** (default terminal), foot, mako, swaylock, fastfetch, wallpapers, GTK theme, `install.sh`.
+- Default terminal: **kitty** with cursor trail + transparency (`kitty/kitty.conf`). `Mod+Return` / applauncher / networkmanager-dmenu point at kitty.
+- Wallpaper: `ensure-wallpaper.sh` must not replace a saved `wallpaper.conf` path with the UsefulBinds fallback.
 - Compositor binary is **swirl**; bar / IPC / nag stay stock **swaybar** / **swaymsg** / **swaynag** (from the Arch `sway` package).
 - SweetPotatOs runs `sync-theme.sh` to mirror these files into the live ISO airootfs.
 
