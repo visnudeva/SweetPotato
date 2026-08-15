@@ -82,6 +82,7 @@ PACMAN_PKGS=(
   blueman
   bluez
   bluez-utils
+  power-profiles-daemon
   # desktop essentials often forgotten on Wayland
   mako
   udiskie
@@ -91,7 +92,6 @@ PACMAN_PKGS=(
   qt6-wayland
   btop
   cliphist
-  wlsunset
   flatpak
   bazaar
   # theming / fonts / icons / gtk
@@ -492,6 +492,8 @@ if pacman -Q ly >/dev/null 2>&1; then
     ${SUDO} systemctl disable sddm.service 2>/dev/null || true
   fi
   ${SUDO} systemctl enable ly@tty2.service 2>/dev/null || true
+  ${SUDO} systemctl enable power-profiles-daemon.service 2>/dev/null || true
+  ${SUDO} systemctl enable bluetooth.service 2>/dev/null || true
   ok "Ly enabled on tty2 — Swirl is the default session"
 else
   warn "ly not installed — skip login screen setup"

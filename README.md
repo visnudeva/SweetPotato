@@ -53,7 +53,7 @@ Pick **FR** (AZERTY) or **US** (QWERTY) when asked. Re-login once so close butto
 | `Mod+o` | Power off |
 | `Mod+Shift+c` | Reload config |
 
-`Mod` is usually the Super/Windows key.
+`Mod` is usually the Super/Windows key. A one-shot tips notification also lists the main binds after login.
 
 ## Default apps
 

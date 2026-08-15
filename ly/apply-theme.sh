@@ -28,7 +28,7 @@ set_kv blank_box true
 set_kv border_fg 0x00ffffff
 set_kv box_title null
 set_kv 'clock' '%H:%M'
-set_kv default_input login
+set_kv default_input password
 set_kv error_bg 0x001d1f21
 set_kv error_fg 0x01a73b50
 set_kv fg 0x00f5e6e8
