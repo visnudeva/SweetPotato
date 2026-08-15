@@ -64,12 +64,16 @@ Pick **FR** (AZERTY) or **US** (QWERTY) when asked. Re-login once so close butto
 | Browser | Firefox |
 | Files | Thunar |
 | Editor | Geany |
+| Calculator | galculator |
 | Terminal | foot |
 | Video | mpv + yt-dlp |
 | Image edit | GIMP |
 | Music | Audacious |
 | PDF | mupdf |
 | Images | swayimg |
+| Torrents | Transmission |
+| Webcam | guvcview |
+| Color picker | hyprpicker |
 | Flatpaks | Bazaar (+ flatpak) |
 | Disks | GNOME Disks |
 

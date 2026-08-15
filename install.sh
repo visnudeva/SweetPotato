@@ -51,6 +51,7 @@ PACMAN_PKGS=(
   nwg-look
   firefox
   geany
+  galculator
   gnome-disk-utility
   # media / creative
   swayimg
@@ -63,6 +64,15 @@ PACMAN_PKGS=(
   audacious-plugins
   cava
   gimp
+  transmission-gtk
+  guvcview
+  hyprpicker
+  unzip
+  zip
+  7zip
+  hunspell
+  hunspell-en_us
+  hunspell-fr-revised
   # audio / portals
   pipewire
   pipewire-pulse
@@ -86,7 +96,6 @@ PACMAN_PKGS=(
   # desktop essentials often forgotten on Wayland
   mako
   udiskie
-  mousepad
   file-roller
   xdg-user-dirs
   qt6-wayland
