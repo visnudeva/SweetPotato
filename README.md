@@ -40,6 +40,8 @@ Pick **FR** (AZERTY) or **US** (QWERTY) when asked. Re-login once so close butto
 | `Mod+f` | file manager (thunar) |
 | `Mod+e` | IDE (geany) |
 | `Mod+Return` | Terminal (foot) |
+| `Mod+m` | Expand focused column to 100% / restore 50/50 |
+| `Mod+Shift+f` | Fullscreen |
 | `Mod+Shift+w` | Wallpaper selector |
 | `Print` | Screenshot → `~/Pictures/Screenshots` (+ clipboard) |
 | `Mod+Shift+Print` | Region screenshot |
