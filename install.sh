@@ -113,6 +113,7 @@ PACMAN_PKGS=(
   libnotify
   fastfetch
   chafa
+  imagemagick
   # TUI login
   ly
 )

@@ -6,7 +6,7 @@ Desktop theme + installer for Arch-based systems. The ISO that ships this theme 
 
 - Source of truth for: **Swirl** compositor config under `~/.config/swirl/` (repo dir `swirl/`), gtk, **foot** (default terminal), mako, swaylock, fastfetch, wallpapers, GTK theme, `install.sh`.
 - Do **not** also ship `~/.config/sway/` — Swirl checks that path **first** and would ignore `~/.config/swirl`. Keep `include /etc/sway/config.d/*` (package drop-ins). `swaylock` stays `~/.config/swaylock`.
-- Default terminal: **foot** (`foot/foot.ini`, `alpha=1.0`). `Mod+Return` / applauncher / networkmanager-dmenu point at foot.
+- Default terminal: **foot** (`foot/foot.ini`, `[colors-dark]` + `alpha=1.0` for foot ≥1.26). `Mod+Return` / applauncher / networkmanager-dmenu point at foot.
 - Ly: `default_input = password`.
 - Status bar polls every 3s (`swirl/scripts/status.sh`).
 - Session: bluetooth unblock + one-shot `tips.sh`.
@@ -17,7 +17,7 @@ Desktop theme + installer for Arch-based systems. The ISO that ships this theme 
 
 ## Fastfetch
 
-- Config: `fastfetch/config.jsonc` → `SPLogo.png` with `logo.type: auto` (terminal graphics / chafa as available).
+- Config: `fastfetch/config.jsonc` → `SPLogo.png` with `logo.type: sixel` (works in foot; kitty `auto` does not). Needs `imagemagick` for conversion.
 - Keep `SPLogo.png` (colored potato) as the source of truth. ASCII `SPLogo.asc` is a last-resort fallback file, not the primary logo.
 
 ## Lid close
