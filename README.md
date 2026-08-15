@@ -50,7 +50,6 @@ Pick **FR** (AZERTY) or **US** (QWERTY) when asked. Re-login once so close butto
 | `Mod+number` | Change workspaces |
 | `Mod+l` | Lock screen |
 | `Mod+c` | Caffeine toggle (no sleep / idle lock) |
-| `Mod+Shift+b` | FSB100 toggle (fullscreen media → max brightness) |
 | `Mod+Shift+e` | Exit Swirl |
 | `Mod+o` | Power off |
 | `Mod+Shift+c` | Reload config |
@@ -85,7 +84,6 @@ Pick **FR** (AZERTY) or **US** (QWERTY) when asked. Re-login once so close butto
 - Charcoal GTK accents over Adwaita-dark
 - Screen lock, foot terminal, mako, Geany color scheme
 - Wi‑Fi menu via `networkmanager-dmenu` (`Mod+n`)
-- FSB100: fullscreen players/browsers jump to max backlight, then restore (`Mod+Shift+b`)
 - Polkit udisks rules so Disks can write ISOs to USB on Swirl
 - Firefox Save As fix (`xdg-desktop-portal-gtk` PATH)
 - Glycin SVG loader tweak for Papirus on low-RAM machines

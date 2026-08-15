@@ -30,12 +30,10 @@ Desktop theme + installer for Arch-based systems. The ISO that ships this theme 
 - `swirl/scripts/caffeine.sh`: idle inhibit only; lid suspend stays enabled.
 - Live ISO turns caffeine on by default (injected in SweetPotatOs sync); installed systems follow this repo’s Swirl config.
 
-## FSB100
+## Brightness
 
-- `swirl/scripts/fsb100.sh`: when a fullscreen media window is focused (mpv/vlc/firefox/… or a media-ish title), set backlight to 100% and restore the previous level on exit.
-- Must inspect the **innermost** focused IPC node (the window). Output/workspace also have `focused: true`; using the first match makes FSB100 a no-op.
-- Also treat layout-fullscreen (window fills the output) because Swirl’s `fullscreen layout` does not set `fullscreen_mode`.
-- On by default (`exec fsb100.sh on`). Toggle with **Mod+Shift+b**. Laptop backlight via `brightnessctl` only.
+- Laptop backlight via `brightnessctl -n` (`swirl/scripts/brightness.sh`). Keys: `XF86MonBrightnessUp/Down`.
+- **FSB100 removed** — it falsely treated maximized windows as fullscreen and re-clamped to 100%, breaking brightness keys (including after toggle-off via orphaned watchers).
 
 ## Swirl
 

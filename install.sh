@@ -292,7 +292,6 @@ cp -f "${SCRIPT_DIR}/swirl/scripts/record.sh" "${HOME}/.config/swirl/scripts/rec
 cp -f "${SCRIPT_DIR}/swirl/scripts/screenshot.sh" "${HOME}/.config/swirl/scripts/screenshot.sh"
 cp -f "${SCRIPT_DIR}/swirl/scripts/ensure-wallpaper.sh" "${HOME}/.config/swirl/scripts/ensure-wallpaper.sh"
 cp -f "${SCRIPT_DIR}/swirl/scripts/caffeine.sh" "${HOME}/.config/swirl/scripts/caffeine.sh"
-cp -f "${SCRIPT_DIR}/swirl/scripts/fsb100.sh" "${HOME}/.config/swirl/scripts/fsb100.sh"
 cp -f "${SCRIPT_DIR}/swirl/scripts/autotile.lua" "${HOME}/.config/swirl/scripts/autotile.lua"
 chmod +x \
   "${HOME}/.config/swirl/scripts/status.sh" \
@@ -306,7 +305,6 @@ chmod +x \
   "${HOME}/.config/swirl/scripts/screenshot.sh" \
   "${HOME}/.config/swirl/scripts/ensure-wallpaper.sh" \
   "${HOME}/.config/swirl/scripts/caffeine.sh" \
-  "${HOME}/.config/swirl/scripts/fsb100.sh"
 # Persist wallpaper choice (include file must exist for sway)
 if [[ ! -f "${HOME}/.config/swirl/wallpaper.conf" ]]; then
   printf 'output * bg "%s" fill\n' "${WALLPAPER_DST}" \
