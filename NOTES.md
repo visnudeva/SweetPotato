@@ -17,7 +17,7 @@ Desktop theme + installer for Arch-based systems. The ISO that ships this theme 
 
 ## Fastfetch
 
-- Config: `fastfetch/config.jsonc` → `SPLogo.png` with `logo.type: sixel` (works in foot; kitty `auto` does not). Needs `imagemagick` for conversion.
+- Config: `fastfetch/config.jsonc` → `SPLogo.png` with `logo.type: chafa` (colored ASCII potato from the PNG; works in foot). Keep `SPLogo.asc` only as a last-resort file.
 - Keep `SPLogo.png` (colored potato) as the source of truth. ASCII `SPLogo.asc` is a last-resort fallback file, not the primary logo.
 
 ## Lid close
