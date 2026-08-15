@@ -39,7 +39,7 @@ Pick **FR** (AZERTY) or **US** (QWERTY) when asked. Re-login once so close butto
 | `Mod+w` | Web browser (firefox) |
 | `Mod+f` | file manager (thunar) |
 | `Mod+e` | IDE (geany) |
-| `Mod+Return` | Terminal (kitty) |
+| `Mod+Return` | Terminal (foot) |
 | `Mod+Shift+w` | Wallpaper selector |
 | `Print` | Screenshot → `~/Pictures/Screenshots` (+ clipboard) |
 | `Mod+Shift+Print` | Region screenshot |
@@ -62,8 +62,8 @@ Pick **FR** (AZERTY) or **US** (QWERTY) when asked. Re-login once so close butto
 | Browser | Firefox |
 | Files | Thunar |
 | Editor | Geany |
-| Terminal | kitty |
-| Video | mpv |
+| Terminal | foot |
+| Video | mpv + yt-dlp |
 | Image edit | GIMP |
 | Music | Audacious |
 | PDF | mupdf |
@@ -74,10 +74,10 @@ Pick **FR** (AZERTY) or **US** (QWERTY) when asked. Re-login once so close butto
 ## What’s included
 
 - Swirl compositor configs (FR + US) — scrolling columns + autotile  
-  (lives in `~/.config/sway/` for compatibility with Swirl’s Sway-style config path)
+  (lives in `~/.config/swirl/`; Swirl also still reads `/etc/sway/config.d` drop-ins)
 - Status bar / IPC / nag via system tools (`swaybar`, `swaymsg`, `swaynag`)
 - Charcoal GTK accents over Adwaita-dark
-- Screen lock, kitty (trail + transparency), mako, Geany color scheme
+- Screen lock, foot terminal, mako, Geany color scheme
 - Wi‑Fi menu via `networkmanager-dmenu` (`Mod+n`)
 - FSB100: fullscreen players/browsers jump to max backlight, then restore (`Mod+Shift+b`)
 - Polkit udisks rules so Disks can write ISOs to USB on Swirl
@@ -94,8 +94,8 @@ Pick **FR** (AZERTY) or **US** (QWERTY) when asked. Re-login once so close butto
 ## Switch keyboard layout later
 
 ```bash
-cp ~/.config/sway/config-fr ~/.config/sway/config   # French
-cp ~/.config/sway/config-us ~/.config/sway/config   # US
+cp ~/.config/swirl/config-fr ~/.config/swirl/config   # French
+cp ~/.config/swirl/config-us ~/.config/swirl/config   # US
 ```
 
 Then `Mod+Shift+c` to reload.

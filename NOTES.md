@@ -4,17 +4,17 @@ Desktop theme + installer for Arch-based systems. The ISO that ships this theme 
 
 ## Role
 
-- Source of truth for: **Swirl** compositor config (still under `~/.config/sway/`), gtk, **kitty** (default terminal), foot, mako, swaylock, fastfetch, wallpapers, GTK theme, `install.sh`.
-- Default terminal: **kitty** with cursor trail + transparency (`kitty/kitty.conf`). `Mod+Return` / applauncher / networkmanager-dmenu point at kitty.
+- Source of truth for: **Swirl** compositor config under `~/.config/swirl/` (repo dir `swirl/`), gtk, **foot** (default terminal), mako, swaylock, fastfetch, wallpapers, GTK theme, `install.sh`.
+- Do **not** also ship `~/.config/sway/` — Swirl checks that path **first** and would ignore `~/.config/swirl`. Keep `include /etc/sway/config.d/*` (package drop-ins). `swaylock` stays `~/.config/swaylock`.
+- Default terminal: **foot** (`foot/foot.ini`). `Mod+Return` / applauncher / networkmanager-dmenu point at foot.
 - Wallpaper: `ensure-wallpaper.sh` must not replace a saved `wallpaper.conf` path with the UsefulBinds fallback.
 - Compositor binary is **swirl**; bar / IPC / nag stay stock **swaybar** / **swaymsg** / **swaynag** (from the Arch `sway` package).
 - SweetPotatOs runs `sync-theme.sh` to mirror these files into the live ISO airootfs.
 
 ## Fastfetch
 
-- Config: `fastfetch/config.jsonc` → `~/.config/fastfetch/SPLogo.asc` (`type: file`).
-- PNG exists for other uses; do not make chafa/PNG the primary logo (falls back to Arch builtin in foot).
-- Keep `SPLogo.asc` in sync with SweetPotatOs after regenerating.
+- Config: `fastfetch/config.jsonc` → `SPLogo.png` with `logo.type: auto` (terminal graphics / chafa as available).
+- Keep `SPLogo.png` (colored potato) as the source of truth. ASCII `SPLogo.asc` is a last-resort fallback file, not the primary logo.
 
 ## Lid close
 
@@ -23,12 +23,14 @@ Desktop theme + installer for Arch-based systems. The ISO that ships this theme 
 
 ## Caffeine
 
-- `sway/scripts/caffeine.sh`: idle inhibit only; lid suspend stays enabled.
-- Live ISO turns caffeine on by default (injected in SweetPotatOs sync); installed systems follow this repo’s sway/Swirl config.
+- `swirl/scripts/caffeine.sh`: idle inhibit only; lid suspend stays enabled.
+- Live ISO turns caffeine on by default (injected in SweetPotatOs sync); installed systems follow this repo’s Swirl config.
 
 ## FSB100
 
-- `sway/scripts/fsb100.sh`: when a fullscreen media window is focused (mpv/vlc/firefox/… or a media-ish title), set backlight to 100% and restore the previous level on exit.
+- `swirl/scripts/fsb100.sh`: when a fullscreen media window is focused (mpv/vlc/firefox/… or a media-ish title), set backlight to 100% and restore the previous level on exit.
+- Must inspect the **innermost** focused IPC node (the window). Output/workspace also have `focused: true`; using the first match makes FSB100 a no-op.
+- Also treat layout-fullscreen (window fills the output) because Swirl’s `fullscreen layout` does not set `fullscreen_mode`.
 - On by default (`exec fsb100.sh on`). Toggle with **Mod+Shift+b**. Laptop backlight via `brightnessctl` only.
 
 ## Swirl

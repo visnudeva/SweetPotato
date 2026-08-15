@@ -34,7 +34,6 @@ PACMAN_PKGS=(
   swaylock
   lua
   # apps / tools used by config
-  kitty
   foot
   wmenu
   j4-dmenu-desktop
@@ -57,6 +56,8 @@ PACMAN_PKGS=(
   swayimg
   mpv
   mpv-mpris
+  yt-dlp
+  ffmpeg
   mupdf
   audacious
   audacious-plugins
@@ -91,7 +92,6 @@ PACMAN_PKGS=(
   btop
   cliphist
   wlsunset
-  gammastep
   flatpak
   bazaar
   # theming / fonts / icons / gtk
@@ -220,11 +220,21 @@ install_swirl
 # ----------------------------------------
 info "Deploying SweetPotato configs..."
 
+# Swirl prefers ~/.config/sway/config if that file exists — migrate then drop it.
+if [[ -d "${HOME}/.config/sway" && ! -L "${HOME}/.config/sway" ]]; then
+  mkdir -p "${HOME}/.config/swirl"
+  if [[ -f "${HOME}/.config/sway/wallpaper.conf" && ! -f "${HOME}/.config/swirl/wallpaper.conf" ]]; then
+    cp -f "${HOME}/.config/sway/wallpaper.conf" "${HOME}/.config/swirl/wallpaper.conf"
+  fi
+  rm -rf "${HOME}/.config/sway"
+  ok "Moved compositor config to ~/.config/swirl (removed leftover ~/.config/sway)"
+fi
+rm -f "${HOME}/.config/sway" 2>/dev/null || true
+
 mkdir -p \
-  "${HOME}/.config/sway/scripts" \
+  "${HOME}/.config/swirl/scripts" \
   "${HOME}/.config/swaylock" \
   "${HOME}/.config/foot" \
-  "${HOME}/.config/kitty" \
   "${HOME}/.config/fastfetch" \
   "${HOME}/.config/gtk-3.0" \
   "${HOME}/.config/gtk-4.0" \
@@ -254,45 +264,45 @@ fi
 
 # Sway config (FR = config, US = config-us)
 if [[ "${KB_LAYOUT}" == "us" ]]; then
-  cp -f "${SCRIPT_DIR}/sway/config-us" "${HOME}/.config/sway/config"
+  cp -f "${SCRIPT_DIR}/swirl/config-us" "${HOME}/.config/swirl/config"
 else
-  cp -f "${SCRIPT_DIR}/sway/config" "${HOME}/.config/sway/config"
+  cp -f "${SCRIPT_DIR}/swirl/config" "${HOME}/.config/swirl/config"
 fi
 # Keep both layouts available for later switching
-cp -f "${SCRIPT_DIR}/sway/config" "${HOME}/.config/sway/config-fr"
-cp -f "${SCRIPT_DIR}/sway/config-us" "${HOME}/.config/sway/config-us"
-cp -f "${SCRIPT_DIR}/sway/scripts/status.sh" "${HOME}/.config/sway/scripts/status.sh"
-cp -f "${SCRIPT_DIR}/sway/scripts/apply-theme.sh" "${HOME}/.config/sway/scripts/apply-theme.sh"
-cp -f "${SCRIPT_DIR}/sway/scripts/volume.sh" "${HOME}/.config/sway/scripts/volume.sh"
-cp -f "${SCRIPT_DIR}/sway/scripts/brightness.sh" "${HOME}/.config/sway/scripts/brightness.sh"
-cp -f "${SCRIPT_DIR}/sway/scripts/media.sh" "${HOME}/.config/sway/scripts/media.sh"
-cp -f "${SCRIPT_DIR}/sway/scripts/applauncher.sh" "${HOME}/.config/sway/scripts/applauncher.sh"
-cp -f "${SCRIPT_DIR}/sway/scripts/wallpaper.sh" "${HOME}/.config/sway/scripts/wallpaper.sh"
-cp -f "${SCRIPT_DIR}/sway/scripts/record.sh" "${HOME}/.config/sway/scripts/record.sh"
-cp -f "${SCRIPT_DIR}/sway/scripts/screenshot.sh" "${HOME}/.config/sway/scripts/screenshot.sh"
-cp -f "${SCRIPT_DIR}/sway/scripts/ensure-wallpaper.sh" "${HOME}/.config/sway/scripts/ensure-wallpaper.sh"
-cp -f "${SCRIPT_DIR}/sway/scripts/caffeine.sh" "${HOME}/.config/sway/scripts/caffeine.sh"
-cp -f "${SCRIPT_DIR}/sway/scripts/fsb100.sh" "${HOME}/.config/sway/scripts/fsb100.sh"
-cp -f "${SCRIPT_DIR}/sway/scripts/autotile.lua" "${HOME}/.config/sway/scripts/autotile.lua"
+cp -f "${SCRIPT_DIR}/swirl/config" "${HOME}/.config/swirl/config-fr"
+cp -f "${SCRIPT_DIR}/swirl/config-us" "${HOME}/.config/swirl/config-us"
+cp -f "${SCRIPT_DIR}/swirl/scripts/status.sh" "${HOME}/.config/swirl/scripts/status.sh"
+cp -f "${SCRIPT_DIR}/swirl/scripts/apply-theme.sh" "${HOME}/.config/swirl/scripts/apply-theme.sh"
+cp -f "${SCRIPT_DIR}/swirl/scripts/volume.sh" "${HOME}/.config/swirl/scripts/volume.sh"
+cp -f "${SCRIPT_DIR}/swirl/scripts/brightness.sh" "${HOME}/.config/swirl/scripts/brightness.sh"
+cp -f "${SCRIPT_DIR}/swirl/scripts/media.sh" "${HOME}/.config/swirl/scripts/media.sh"
+cp -f "${SCRIPT_DIR}/swirl/scripts/applauncher.sh" "${HOME}/.config/swirl/scripts/applauncher.sh"
+cp -f "${SCRIPT_DIR}/swirl/scripts/wallpaper.sh" "${HOME}/.config/swirl/scripts/wallpaper.sh"
+cp -f "${SCRIPT_DIR}/swirl/scripts/record.sh" "${HOME}/.config/swirl/scripts/record.sh"
+cp -f "${SCRIPT_DIR}/swirl/scripts/screenshot.sh" "${HOME}/.config/swirl/scripts/screenshot.sh"
+cp -f "${SCRIPT_DIR}/swirl/scripts/ensure-wallpaper.sh" "${HOME}/.config/swirl/scripts/ensure-wallpaper.sh"
+cp -f "${SCRIPT_DIR}/swirl/scripts/caffeine.sh" "${HOME}/.config/swirl/scripts/caffeine.sh"
+cp -f "${SCRIPT_DIR}/swirl/scripts/fsb100.sh" "${HOME}/.config/swirl/scripts/fsb100.sh"
+cp -f "${SCRIPT_DIR}/swirl/scripts/autotile.lua" "${HOME}/.config/swirl/scripts/autotile.lua"
 chmod +x \
-  "${HOME}/.config/sway/scripts/status.sh" \
-  "${HOME}/.config/sway/scripts/apply-theme.sh" \
-  "${HOME}/.config/sway/scripts/volume.sh" \
-  "${HOME}/.config/sway/scripts/brightness.sh" \
-  "${HOME}/.config/sway/scripts/media.sh" \
-  "${HOME}/.config/sway/scripts/applauncher.sh" \
-  "${HOME}/.config/sway/scripts/wallpaper.sh" \
-  "${HOME}/.config/sway/scripts/record.sh" \
-  "${HOME}/.config/sway/scripts/screenshot.sh" \
-  "${HOME}/.config/sway/scripts/ensure-wallpaper.sh" \
-  "${HOME}/.config/sway/scripts/caffeine.sh" \
-  "${HOME}/.config/sway/scripts/fsb100.sh"
+  "${HOME}/.config/swirl/scripts/status.sh" \
+  "${HOME}/.config/swirl/scripts/apply-theme.sh" \
+  "${HOME}/.config/swirl/scripts/volume.sh" \
+  "${HOME}/.config/swirl/scripts/brightness.sh" \
+  "${HOME}/.config/swirl/scripts/media.sh" \
+  "${HOME}/.config/swirl/scripts/applauncher.sh" \
+  "${HOME}/.config/swirl/scripts/wallpaper.sh" \
+  "${HOME}/.config/swirl/scripts/record.sh" \
+  "${HOME}/.config/swirl/scripts/screenshot.sh" \
+  "${HOME}/.config/swirl/scripts/ensure-wallpaper.sh" \
+  "${HOME}/.config/swirl/scripts/caffeine.sh" \
+  "${HOME}/.config/swirl/scripts/fsb100.sh"
 # Persist wallpaper choice (include file must exist for sway)
-if [[ ! -f "${HOME}/.config/sway/wallpaper.conf" ]]; then
+if [[ ! -f "${HOME}/.config/swirl/wallpaper.conf" ]]; then
   printf 'output * bg "%s" fill\n' "${WALLPAPER_DST}" \
-    > "${HOME}/.config/sway/wallpaper.conf"
+    > "${HOME}/.config/swirl/wallpaper.conf"
 fi
-ok "Swirl config (${KB_LAYOUT}) installed (~/.config/sway)"
+ok "Swirl config (${KB_LAYOUT}) installed (~/.config/swirl)"
 
 # Swaylock — plain dark grey, large indicator (no background image)
 cp -f "${SCRIPT_DIR}/swaylock/config" "${HOME}/.config/swaylock/config"
@@ -362,9 +372,7 @@ fi
 ok "CSD swirl wrapper installed (~/.local/bin/swirl)"
 
 
-# Kitty (default terminal) + foot (optional)
-cp -f "${SCRIPT_DIR}/kitty/kitty.conf" "${HOME}/.config/kitty/kitty.conf"
-ok "Kitty themed (cursor trail + transparency)"
+# Foot (default terminal)
 cp -f "${SCRIPT_DIR}/foot/foot.ini" "${HOME}/.config/foot/foot.ini"
 ok "Foot themed"
 
@@ -464,7 +472,7 @@ ok "Cursor theme: ${CURSOR_NAME}"
 ok "Icons: Papirus-Dark (papirus-icon-theme)"
 
 # Push theme into gsettings / xfconf / xsettingsd (Thunar reads these, not only settings.ini)
-CURSOR="${CURSOR_NAME}" "${HOME}/.config/sway/scripts/apply-theme.sh"
+CURSOR="${CURSOR_NAME}" "${HOME}/.config/swirl/scripts/apply-theme.sh"
 ok "Theme applied to gsettings, xfconf, and xsettingsd"
 
 # Ly — TUI login screen (SweetPotato charcoal / potato red)
@@ -500,8 +508,8 @@ echo "  Lock screen:   Mod+l"
 echo "  App menu:      Mod+Space"
 echo "  Login screen:  Ly (reboot after install) — Swirl is the default session"
 echo "  Switch layout later:"
-echo "    cp ~/.config/sway/config-fr ~/.config/sway/config   # French"
-echo "    cp ~/.config/sway/config-us ~/.config/sway/config   # US"
+echo "    cp ~/.config/swirl/config-fr ~/.config/swirl/config   # French"
+echo "    cp ~/.config/swirl/config-us ~/.config/swirl/config   # US"
 echo "  Then Mod+Shift+c to reload."
 echo
 echo "  Re-login once so close buttons (CSD) and PATH fixes apply fully."
