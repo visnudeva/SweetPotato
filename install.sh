@@ -101,8 +101,16 @@ PACMAN_PKGS=(
   qt6-wayland
   btop
   cliphist
-  flatpak
-  bazaar
+  # AUR workflow deps (yay/octopi/tera themselves installed below via yay)
+  git
+  fzf
+  github-cli
+  wget
+  python
+  qtermwidget
+  qt6-multimedia
+  qt6-svg
+  pacman-contrib
   # theming / fonts / icons / gtk
   gtk3
   gtk4
@@ -186,6 +194,38 @@ if ((${#INSTALL_PKGS[@]})); then
 else
   ok "All pacman packages already installed"
 fi
+
+# ----------------------------------------
+# AUR: yay + Octopi + tera (no Flatpak/Bazaar)
+# ----------------------------------------
+install_aur_apps() {
+  if ! need_cmd yay; then
+    info "Bootstrap yay-bin from AUR..."
+    local tmp
+    tmp="$(mktemp -d)"
+    if git clone --depth 1 https://aur.archlinux.org/yay-bin.git "${tmp}/yay-bin" \
+      && (cd "${tmp}/yay-bin" && makepkg -si --noconfirm); then
+      ok "yay installed"
+    else
+      warn "Could not install yay — skip Octopi/tera (install yay manually, then: yay -S qt-sudo octopi tera)"
+      rm -rf "${tmp}"
+      return 0
+    fi
+    rm -rf "${tmp}"
+  fi
+  info "Installing Octopi + tera from AUR..."
+  yay -S --needed --noconfirm qt-sudo octopi tera || {
+    warn "AUR install incomplete — try: yay -S qt-sudo octopi tera"
+    return 0
+  }
+  mkdir -p "${HOME}/.config/octopi"
+  if [[ ! -f "${HOME}/.config/octopi/octopi.conf" ]]; then
+    printf '%s\n' '[General]' 'Aur_Tool_Name=yay' 'Search_Outdated_AUR_Packages=true' \
+      > "${HOME}/.config/octopi/octopi.conf"
+  fi
+  ok "AUR apps ready (Octopi + tera; yay for AUR)"
+}
+install_aur_apps
 
 # ----------------------------------------
 # Swirl compositor (not in official repos)

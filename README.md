@@ -73,7 +73,8 @@ Pick **FR** (AZERTY) or **US** (QWERTY) when asked. Re-login once so close butto
 | Torrents | Transmission |
 | Webcam | guvcview |
 | Color picker | hyprpicker |
-| Flatpaks | Bazaar (+ flatpak) |
+| Packages | Octopi (+ yay / AUR) |
+| Web radio | tera |
 | Disks | GNOME Disks |
 
 ## What’s included
