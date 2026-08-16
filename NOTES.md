@@ -32,8 +32,8 @@ Desktop theme + installer for Arch-based systems. The ISO that ships this theme 
 
 ## Brightness
 
-- Laptop backlight via `brightnessctl -n` (`swirl/scripts/brightness.sh`). Keys: `XF86MonBrightnessUp/Down`.
-- **FSB100 removed** — it falsely treated maximized windows as fullscreen and re-clamped to 100%, breaking brightness keys (including after toggle-off via orphaned watchers).
+- Laptop backlight via plain `brightnessctl` (`swirl/scripts/brightness.sh`). Keys: `XF86MonBrightnessUp/Down`. Keep this simple — do not add `-n` (`--min-value`) or FSB100-style clampers.
+- **FSB100 removed** — it falsely treated maximized windows as fullscreen and re-clamped to 100%, breaking brightness keys.
 
 ## Swirl
 
