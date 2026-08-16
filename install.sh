@@ -62,7 +62,6 @@ PACMAN_PKGS=(
   mupdf
   audacious
   audacious-plugins
-  cava
   gimp
   transmission-gtk
   guvcview
@@ -101,15 +100,12 @@ PACMAN_PKGS=(
   qt6-wayland
   btop
   cliphist
-  # AUR workflow deps (yay/octopi/tera themselves installed below via yay)
+  # AUR workflow deps (yay/shelly/tera themselves installed below via yay)
   git
   fzf
   github-cli
   wget
   python
-  qtermwidget
-  qt6-multimedia
-  qt6-svg
   pacman-contrib
   # theming / fonts / icons / gtk
   gtk3
@@ -196,7 +192,7 @@ else
 fi
 
 # ----------------------------------------
-# AUR: yay + Octopi + tera (no Flatpak/Bazaar)
+# AUR: yay + Shelly + tera (no Flatpak/Bazaar)
 # ----------------------------------------
 install_aur_apps() {
   if ! need_cmd yay; then
@@ -207,23 +203,19 @@ install_aur_apps() {
       && (cd "${tmp}/yay-bin" && makepkg -si --noconfirm); then
       ok "yay installed"
     else
-      warn "Could not install yay — skip Octopi/tera (install yay manually, then: yay -S qt-sudo octopi tera)"
+      warn "Could not install yay — skip Shelly/tera (install yay manually, then: yay -S shelly-bin tera)"
       rm -rf "${tmp}"
       return 0
     fi
     rm -rf "${tmp}"
   fi
-  info "Installing Octopi + tera from AUR..."
-  yay -S --needed --noconfirm qt-sudo octopi tera || {
-    warn "AUR install incomplete — try: yay -S qt-sudo octopi tera"
+  info "Installing Shelly + tera from AUR..."
+  # shelly-bin: prebuilt; source shelly needs zig>=0.16
+  yay -S --needed --noconfirm shelly-bin tera || {
+    warn "AUR install incomplete — try: yay -S shelly-bin tera"
     return 0
   }
-  mkdir -p "${HOME}/.config/octopi"
-  if [[ ! -f "${HOME}/.config/octopi/octopi.conf" ]]; then
-    printf '%s\n' '[General]' 'Aur_Tool_Name=yay' 'Search_Outdated_AUR_Packages=true' \
-      > "${HOME}/.config/octopi/octopi.conf"
-  fi
-  ok "AUR apps ready (Octopi + tera; yay for AUR)"
+  ok "AUR apps ready (Shelly + tera; yay for AUR)"
 }
 install_aur_apps
 

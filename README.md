@@ -73,7 +73,7 @@ Pick **FR** (AZERTY) or **US** (QWERTY) when asked. Re-login once so close butto
 | Torrents | Transmission |
 | Webcam | guvcview |
 | Color picker | hyprpicker |
-| Packages | Octopi (+ yay / AUR) |
+| Packages | Shelly (+ yay / AUR) |
 | Web radio | tera |
 | Disks | GNOME Disks |
 
