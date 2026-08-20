@@ -274,4 +274,9 @@ exec blueman-applet
 exec sh -c 'rfkill unblock bluetooth 2>/dev/null || true'
 exec ~/.config/swirl/scripts/tips.sh
 
+for_window [app_id="io.calamares.calamares"] floating enable
+
+# Saved monitor layout (nwg-displays / Mod+Ctrl+d)
+include ~/.config/sway/outputs
+include ~/.config/sway/workspaces
 include /etc/sway/config.d/*
