@@ -60,8 +60,6 @@ PACMAN_PKGS=(
   yt-dlp
   ffmpeg
   mupdf
-  audacious
-  audacious-plugins
   gimp
   transmission-gtk
   guvcview
@@ -100,7 +98,7 @@ PACMAN_PKGS=(
   qt6-wayland
   btop
   cliphist
-  # AUR workflow deps (yay/shelly/tera themselves installed below via yay)
+  # AUR workflow deps (yay/shelly/localsend themselves installed below via yay)
   git
   fzf
   github-cli
@@ -192,7 +190,7 @@ else
 fi
 
 # ----------------------------------------
-# AUR: yay + Shelly + tera (no Flatpak/Bazaar)
+# AUR: yay + Shelly + LocalSend (no Flatpak/Bazaar)
 # ----------------------------------------
 install_aur_apps() {
   if ! need_cmd yay; then
@@ -203,21 +201,71 @@ install_aur_apps() {
       && (cd "${tmp}/yay-bin" && makepkg -si --noconfirm); then
       ok "yay installed"
     else
-      warn "Could not install yay — skip Shelly/tera (install yay manually, then: yay -S shelly-bin tera)"
+      warn "Could not install yay — skip Shelly/LocalSend (install yay manually, then: yay -S shelly-bin localsend-bin)"
       rm -rf "${tmp}"
       return 0
     fi
     rm -rf "${tmp}"
   fi
-  info "Installing Shelly + tera from AUR..."
+  info "Installing Shelly + LocalSend from AUR..."
   # shelly-bin: prebuilt; source shelly needs zig>=0.16
-  yay -S --needed --noconfirm shelly-bin tera || {
-    warn "AUR install incomplete — try: yay -S shelly-bin tera"
+  yay -S --needed --noconfirm shelly-bin localsend-bin || {
+    warn "AUR install incomplete — try: yay -S shelly-bin localsend-bin"
     return 0
   }
-  ok "AUR apps ready (Shelly + tera; yay for AUR)"
+  ok "AUR apps ready (Shelly + LocalSend; yay for AUR)"
 }
 install_aur_apps
+
+# ----------------------------------------
+# Spore — web radio + local music (https://github.com/visnudeva/spore)
+# ----------------------------------------
+install_spore() {
+  if command -v spore >/dev/null 2>&1; then
+    ok "spore already installed"
+    return 0
+  fi
+  if ! need_cmd go; then
+    warn "spore not installed — install go, then: git clone https://github.com/visnudeva/spore && cd spore && go build -o spore ./cmd/spore"
+    return 0
+  fi
+  info "Building spore from GitHub..."
+  local tmp
+  tmp="$(mktemp -d)"
+  if ! git clone --depth 1 https://github.com/visnudeva/spore.git "${tmp}/spore"; then
+    warn "spore clone failed"
+    rm -rf "${tmp}"
+    return 0
+  fi
+  if ! (cd "${tmp}/spore" && go build -trimpath -ldflags='-s -w' -o spore ./cmd/spore); then
+    warn "spore build failed"
+    rm -rf "${tmp}"
+    return 0
+  fi
+  ${SUDO} install -Dm755 "${tmp}/spore/spore" /usr/local/bin/spore
+  if [[ -f "${tmp}/spore/Logo.png" ]]; then
+    ${SUDO} install -Dm644 "${tmp}/spore/Logo.png" /usr/share/pixmaps/spore.png
+    ${SUDO} install -Dm644 "${tmp}/spore/Logo.png" /usr/share/icons/hicolor/256x256/apps/spore.png
+  fi
+  mkdir -p "${HOME}/.local/share/applications"
+  cat >"${HOME}/.local/share/applications/spore.desktop" <<'EOF'
+[Desktop Entry]
+Name=Spore
+GenericName=Music player
+Comment=Web radio and local music player with visualizers
+Exec=foot -e spore
+TryExec=foot
+Icon=spore
+Type=Application
+Categories=Audio;Player;Music;
+Keywords=radio;music;mp3;flac;player;terminal;tui;spore;
+Terminal=false
+StartupNotify=true
+EOF
+  rm -rf "${tmp}"
+  ok "spore installed (launch: foot -e spore or Mod+Space → Spore)"
+}
+install_spore
 
 # ----------------------------------------
 # Swirl compositor (not in official repos)

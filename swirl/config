@@ -21,6 +21,8 @@ set $web firefox
 set $file thunar
 # Your preferred editor
 set $editor geany
+# Web radio + local music (Spore TUI)
+set $music spore
 
 ### Output configuration
 #
@@ -102,6 +104,9 @@ seat * xcursor_theme capitaine-cursors 24
 
     # Start your editor
     bindsym $mod+e exec $editor
+
+    # Web radio + local music (Spore)
+    bindsym $mod+r exec $term -e spore
 
     # Lock screen (Mod+l — vim focus-right moved to arrow keys only)
     bindsym $mod+l exec swaylock -f
@@ -201,7 +206,7 @@ mode "resize" {
     bindsym Return mode "default"
     bindsym Escape mode "default"
 }
-bindsym $mod+r mode "resize"
+bindsym $mod+Shift+r mode "resize"
 #
 # Utilities:
 #

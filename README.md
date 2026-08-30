@@ -39,10 +39,12 @@ Pick **FR** (AZERTY) or **US** (QWERTY) when asked. Re-login once so close butto
 | `Mod+w` | Web browser (firefox) |
 | `Mod+f` | file manager (thunar) |
 | `Mod+e` | IDE (geany) |
+| `Mod+r` | Music / radio (Spore) |
 | `Mod+Return` | Terminal (foot) |
 | `Mod+m` | Expand focused column to 100% / restore 50/50 |
 | `Mod+Shift+f` | Fullscreen |
-| `Mod+Shift+w` | Wallpaper selector |
+| `Mod+Shift+w` | Wallpaper selector (waypaper) |
+| `Mod+Shift+r` | Resize mode (arrow keys; Enter/Esc to exit) |
 | `Print` | Screenshot → `~/Pictures/Screenshots` (+ clipboard) |
 | `Mod+Shift+Print` | Region screenshot |
 | `Mod+Print` | Screen record toggle (region + audio → `~/Videos`) |
@@ -58,6 +60,8 @@ Pick **FR** (AZERTY) or **US** (QWERTY) when asked. Re-login once so close butto
 
 ## Default apps
 
+**Spore** (web radio + local music) and **LocalSend** (nearby sharing) replace **tera** and **Audacious** from earlier builds.
+
 | Role | App |
 |------|-----|
 | Browser | Firefox |
@@ -67,14 +71,14 @@ Pick **FR** (AZERTY) or **US** (QWERTY) when asked. Re-login once so close butto
 | Terminal | foot |
 | Video | mpv + yt-dlp |
 | Image edit | GIMP |
-| Music | Audacious |
+| Music / radio | Spore |
+| Nearby share | LocalSend |
 | PDF | mupdf |
 | Images | swayimg |
 | Torrents | Transmission |
 | Webcam | guvcview |
 | Color picker | hyprpicker |
 | Packages | Shelly (+ yay / AUR) |
-| Web radio | tera |
 | Disks | GNOME Disks |
 
 ## What’s included
