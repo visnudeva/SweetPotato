@@ -136,18 +136,42 @@ echo
 # ----------------------------------------
 # Keyboard layout choice
 # ----------------------------------------
+# Non-interactive (spo-upgrade): SWEETPOTATO_KB=fr|us, or SWEETPOTATO_NONINTERACTIVE=1
+# which reuses the layout already in ~/.config/swirl/config.
+detect_kb_layout() {
+  local cfg="${HOME}/.config/swirl/config"
+  if [[ -f "${cfg}" ]] && grep -qE 'bindsym \$mod\+ampersand[[:space:]]+workspace' "${cfg}"; then
+    echo fr
+  elif [[ -f "${cfg}" ]] && grep -qE 'bindsym \$mod\+1[[:space:]]+workspace' "${cfg}"; then
+    echo us
+  else
+    echo fr
+  fi
+}
+
 KB_LAYOUT=""
-while [[ -z "${KB_LAYOUT}" ]]; do
-  echo "Keyboard layout:"
-  echo "  1) fr  (AZERTY — workspace binds: & é \" ' ( - è _ ç à)"
-  echo "  2) us  (QWERTY — workspace binds: 1 2 3 4 5 6 7 8 9 0)"
-  read -r -p "Choose [1/2]: " choice
-  case "${choice}" in
-    1|fr|FR) KB_LAYOUT="fr" ;;
-    2|us|US) KB_LAYOUT="us" ;;
-    *) warn "Invalid choice." ;;
-  esac
-done
+case "${SWEETPOTATO_KB:-}" in
+  fr|FR|1) KB_LAYOUT="fr" ;;
+  us|US|2) KB_LAYOUT="us" ;;
+esac
+if [[ -z "${KB_LAYOUT}" ]]; then
+  if [[ "${SWEETPOTATO_NONINTERACTIVE:-0}" == "1" ]] || [[ ! -t 0 ]]; then
+    KB_LAYOUT="$(detect_kb_layout)"
+    info "Non-interactive keyboard layout: ${KB_LAYOUT}"
+  else
+    while [[ -z "${KB_LAYOUT}" ]]; do
+      echo "Keyboard layout:"
+      echo "  1) fr  (AZERTY — workspace binds: & é \" ' ( - è _ ç à)"
+      echo "  2) us  (QWERTY — workspace binds: 1 2 3 4 5 6 7 8 9 0)"
+      read -r -p "Choose [1/2]: " choice
+      case "${choice}" in
+        1|fr|FR) KB_LAYOUT="fr" ;;
+        2|us|US) KB_LAYOUT="us" ;;
+        *) warn "Invalid choice." ;;
+      esac
+    done
+  fi
+fi
 ok "Keyboard: ${KB_LAYOUT}"
 
 # ----------------------------------------
