@@ -62,7 +62,7 @@ Pick **FR** (AZERTY) or **US** (QWERTY) when asked. Re-login once so close butto
 | `Mod+o` | Power off |
 | `Mod+Shift+c` | Reload config |
 
-`Mod` is usually the Super/Windows key. After login, a single notification points at `Mod+?` for the floating cheatsheet.
+`Mod` is usually the Super/Windows key. After each login, a notification points at `Mod+?` for the floating cheatsheet.
 
 ## Default apps
 

@@ -9,7 +9,7 @@ Desktop theme + installer for Arch-based systems. The ISO that ships this theme 
 - Default terminal: **foot** (`foot/foot.ini`, `[colors-dark]` + `alpha=1.0` for foot ≥1.26). `Mod+Return` / applauncher / networkmanager-dmenu point at foot.
 - Ly: `default_input = password`.
 - Status bar polls every 3s (`swirl/scripts/status.sh`).
-- Session: bluetooth unblock + one-shot `tips.sh` (points at Mod+? cheatsheet).
+- Session: bluetooth unblock + `tips.sh` every login (points at Mod+? cheatsheet).
 - **Mod+m** / `expand.sh`: toggle focused column full width ↔ 50/50 pair layout (`set_size`, not fullscreen).
 - Cheatsheet: `cheatsheet.sh` + `cheatsheet.txt`; floating foot via `app_id=sweetpotato-cheatsheet` (`Mod+?`).
 - Wallpaper: `ensure-wallpaper.sh` must not replace a saved `wallpaper.conf` path with the SPixelBG fallback. Default is `SPixelBG.png`; do not ship UsefulBinds/BindsBG.
