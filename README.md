@@ -43,6 +43,7 @@ Pick **FR** (AZERTY) or **US** (QWERTY) when asked. Re-login once so close butto
 | `Mod+Return` | Terminal (foot) |
 | `Mod+m` | Expand focused column to 100% / restore 50/50 |
 | `Mod+Shift+f` | Fullscreen |
+| `Mod+?` | Floating keybind cheatsheet (toggle) |
 | `Mod+Shift+w` | Wallpaper selector (waypaper) |
 | `Mod+Shift+r` | Resize mode (arrow keys; Enter/Esc to exit) |
 | `Print` | Screenshot → `~/Pictures/Screenshots` (+ clipboard) |
@@ -61,7 +62,7 @@ Pick **FR** (AZERTY) or **US** (QWERTY) when asked. Re-login once so close butto
 | `Mod+o` | Power off |
 | `Mod+Shift+c` | Reload config |
 
-`Mod` is usually the Super/Windows key. A one-shot tips notification also lists the main binds after login.
+`Mod` is usually the Super/Windows key. After login, a single notification points at `Mod+?` for the floating cheatsheet.
 
 ## Default apps
 

@@ -6,7 +6,7 @@ set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 BACKGROUNDS_DIR="${SCRIPT_DIR}/backgrounds"
-WALLPAPER_DEFAULT="UsefulBinds.png"
+WALLPAPER_DEFAULT="SPixelBG.png"
 WALLPAPER_DST_DIR="${HOME}/.local/share/backgrounds"
 WALLPAPER_DST="${WALLPAPER_DST_DIR}/${WALLPAPER_DEFAULT}"
 
@@ -360,7 +360,7 @@ mkdir -p \
   "${HOME}/Pictures/Screenshots" \
   "${HOME}/Videos"
 
-# Wallpapers (default UsefulBinds + extras for Mod+Shift+w)
+# Wallpapers (default SPixelBG + extras for Mod+Shift+w)
 mkdir -p "${WALLPAPER_DST_DIR}"
 if [[ -d "${BACKGROUNDS_DIR}" ]]; then
   cp -f "${BACKGROUNDS_DIR}/"*.png "${WALLPAPER_DST_DIR}/"
@@ -396,6 +396,9 @@ cp -f "${SCRIPT_DIR}/swirl/scripts/record.sh" "${HOME}/.config/swirl/scripts/rec
 cp -f "${SCRIPT_DIR}/swirl/scripts/screenshot.sh" "${HOME}/.config/swirl/scripts/screenshot.sh"
 cp -f "${SCRIPT_DIR}/swirl/scripts/ensure-wallpaper.sh" "${HOME}/.config/swirl/scripts/ensure-wallpaper.sh"
 cp -f "${SCRIPT_DIR}/swirl/scripts/caffeine.sh" "${HOME}/.config/swirl/scripts/caffeine.sh"
+cp -f "${SCRIPT_DIR}/swirl/scripts/tips.sh" "${HOME}/.config/swirl/scripts/tips.sh"
+cp -f "${SCRIPT_DIR}/swirl/scripts/cheatsheet.sh" "${HOME}/.config/swirl/scripts/cheatsheet.sh"
+cp -f "${SCRIPT_DIR}/swirl/cheatsheet.txt" "${HOME}/.config/swirl/cheatsheet.txt"
 cp -f "${SCRIPT_DIR}/swirl/scripts/autotile.lua" "${HOME}/.config/swirl/scripts/autotile.lua"
 chmod +x \
   "${HOME}/.config/swirl/scripts/status.sh" \
@@ -409,6 +412,8 @@ chmod +x \
   "${HOME}/.config/swirl/scripts/screenshot.sh" \
   "${HOME}/.config/swirl/scripts/ensure-wallpaper.sh" \
   "${HOME}/.config/swirl/scripts/caffeine.sh" \
+  "${HOME}/.config/swirl/scripts/tips.sh" \
+  "${HOME}/.config/swirl/scripts/cheatsheet.sh"
 # Persist wallpaper choice (include file must exist for sway)
 if [[ ! -f "${HOME}/.config/swirl/wallpaper.conf" ]]; then
   printf 'output * bg "%s" fill\n' "${WALLPAPER_DST}" \
