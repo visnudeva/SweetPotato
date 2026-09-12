@@ -36,7 +36,7 @@ Pick **FR** (AZERTY) or **US** (QWERTY) when asked. Re-login once so close butto
 |------|--------|
 | `Mod+n` | Wi‑Fi / NetworkManager |
 | `Mod+Space` | App launcher |
-| `Mod+w` | Web browser (firefox) |
+| `Mod+w` | Web browser (Brave Origin) |
 | `Mod+f` | file manager (thunar) |
 | `Mod+e` | IDE (geany) |
 | `Mod+r` | Music / radio (Spore) |

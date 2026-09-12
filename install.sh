@@ -49,7 +49,6 @@ PACMAN_PKGS=(
   gvfs-mtp
   gvfs-smb
   nwg-look
-  firefox
   geany
   galculator
   gnome-disk-utility
@@ -190,7 +189,7 @@ else
 fi
 
 # ----------------------------------------
-# AUR: yay + Shelly + LocalSend (no Flatpak/Bazaar)
+# AUR: yay + Brave Origin + Shelly + LocalSend (no Flatpak/Bazaar)
 # ----------------------------------------
 install_aur_apps() {
   if ! need_cmd yay; then
@@ -201,19 +200,20 @@ install_aur_apps() {
       && (cd "${tmp}/yay-bin" && makepkg -si --noconfirm); then
       ok "yay installed"
     else
-      warn "Could not install yay — skip Shelly/LocalSend (install yay manually, then: yay -S shelly-bin localsend-bin)"
+      warn "Could not install yay — skip AUR apps (install yay manually, then: yay -S brave-origin-bin shelly-bin localsend-bin)"
       rm -rf "${tmp}"
       return 0
     fi
     rm -rf "${tmp}"
   fi
-  info "Installing Shelly + LocalSend from AUR..."
+  info "Installing Brave Origin + Shelly + LocalSend from AUR..."
   # shelly-bin: prebuilt; source shelly needs zig>=0.16
-  yay -S --needed --noconfirm shelly-bin localsend-bin || {
-    warn "AUR install incomplete — try: yay -S shelly-bin localsend-bin"
+  # brave-origin-bin: default Mod+w browser (Firefox stays optional if already installed)
+  yay -S --needed --noconfirm brave-origin-bin shelly-bin localsend-bin || {
+    warn "AUR install incomplete — try: yay -S brave-origin-bin shelly-bin localsend-bin"
     return 0
   }
-  ok "AUR apps ready (Shelly + LocalSend; yay for AUR)"
+  ok "AUR apps ready (Brave Origin + Shelly + LocalSend; yay for AUR)"
 }
 install_aur_apps
 
