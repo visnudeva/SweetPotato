@@ -136,7 +136,7 @@ echo
 # ----------------------------------------
 # Keyboard layout choice
 # ----------------------------------------
-# Non-interactive (spo-upgrade): SWEETPOTATO_KB=fr|us, or SWEETPOTATO_NONINTERACTIVE=1
+# Non-interactive: SWEETPOTATO_KB=fr|us, or SWEETPOTATO_NONINTERACTIVE=1
 # which reuses the layout already in ~/.config/swirl/config.
 detect_kb_layout() {
   local cfg="${HOME}/.config/swirl/config"
