@@ -42,6 +42,7 @@ Pick **FR** (AZERTY) or **US** (QWERTY) when asked. Re-login once so close butto
 | `Mod+r` | Music / radio (Spore) |
 | `Mod+Return` | Terminal (foot) |
 | `Mod+m` | Expand focused column to 100% / restore 50/50 |
+| `Mod+a` / `Mod+Shift+space` | Floating toggle |
 | `Mod+Shift+f` | Fullscreen |
 | `Mod+?` | Floating keybind cheatsheet (toggle) |
 | `Mod+Shift+w` | Wallpaper selector (waypaper) |
@@ -53,13 +54,15 @@ Pick **FR** (AZERTY) or **US** (QWERTY) when asked. Re-login once so close butto
 | `Mod+number` | Change workspaces |
 | `Mod+Tab` | Workspace overview (Super+drag windows between desktops) |
 | `Mod+Shift+Tab` | Overview of windows on the current desktop |
-| `Mod+Up` / `Mod+Down` / arrows | Focus window visually (not workspace) |
+| Click (in overview) | Zoom back in on that window / desktop |
+| `Mod+Up` / `Mod+Down` | Switch workspace up / down (also exits overview) |
+| `Mod+Left` / `Mod+Right` / `Mod+hjkl` | Focus window visually |
 | `Mod+Ctrl+Up` / `Mod+Ctrl+Down` | Move window to workspace above / below |
 | `Mod+Shift+number` | Move window to workspace 1–10 |
 | `Mod+l` | Lock screen |
 | `Mod+c` | Caffeine toggle (no sleep / idle lock) |
 | `Mod+Shift+e` | Exit Swirl |
-| `Mod+o` | Power off |
+| `Mod+o` / `Mod+Escape` | Power off |
 | `Mod+Shift+c` | Reload config |
 
 `Mod` is usually the Super/Windows key. After each login, a notification points at `Mod+?` for the floating cheatsheet.
