@@ -94,6 +94,7 @@ Pick **FR** (AZERTY) or **US** (QWERTY) when asked. Re-login once so close butto
 
 - Swirl compositor configs (FR + US) — scrolling columns + autotile  
   (lives in `~/.config/swirl/`; Swirl also still reads `/etc/sway/config.d` drop-ins)
+- User overrides: `~/.config/swirl/config.d/user` (seeded once; never overwritten by updates)
 - Status bar / IPC / nag via system tools (`swaybar`, `swaymsg`, `swaynag`)
 - Charcoal GTK accents over Adwaita-dark
 - Screen lock, foot terminal, mako, Geany color scheme

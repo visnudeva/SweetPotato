@@ -400,6 +400,11 @@ cp -f "${SCRIPT_DIR}/swirl/scripts/tips.sh" "${HOME}/.config/swirl/scripts/tips.
 cp -f "${SCRIPT_DIR}/swirl/scripts/cheatsheet.sh" "${HOME}/.config/swirl/scripts/cheatsheet.sh"
 cp -f "${SCRIPT_DIR}/swirl/cheatsheet.txt" "${HOME}/.config/swirl/cheatsheet.txt"
 cp -f "${SCRIPT_DIR}/swirl/scripts/autotile.lua" "${HOME}/.config/swirl/scripts/autotile.lua"
+# User keybind/config overrides — seed once; never clobber on reinstall.
+mkdir -p "${HOME}/.config/swirl/config.d"
+if [[ ! -f "${HOME}/.config/swirl/config.d/user" ]]; then
+  cp -f "${SCRIPT_DIR}/swirl/config.d/user" "${HOME}/.config/swirl/config.d/user"
+fi
 chmod +x \
   "${HOME}/.config/swirl/scripts/status.sh" \
   "${HOME}/.config/swirl/scripts/apply-theme.sh" \
