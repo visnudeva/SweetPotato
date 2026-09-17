@@ -55,7 +55,7 @@ Pick **FR** (AZERTY) or **US** (QWERTY) when asked. Re-login once so close butto
 | `Mod+Tab` | Workspace overview (Super+drag windows between desktops) |
 | `Mod+Shift+Tab` | Overview of windows on the current desktop |
 | Click (in overview) | Zoom back in on that window / desktop |
-| `Mod+Up` / `Mod+Down` | Switch workspace up / down (also exits overview) |
+| `Mod+Up` / `Mod+Down` | Workspace above / below (also exits overview) |
 | `Mod+Left` / `Mod+Right` / `Mod+hjkl` | Focus window visually |
 | `Mod+Ctrl+Up` / `Mod+Ctrl+Down` | Move window to workspace above / below |
 | `Mod+Shift+number` | Move window to workspace 1–10 |
