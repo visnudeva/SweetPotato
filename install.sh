@@ -60,7 +60,6 @@ PACMAN_PKGS=(
   ffmpeg
   mupdf
   gimp
-  transmission-gtk
   guvcview
   hyprpicker
   unzip
@@ -290,6 +289,64 @@ EOF
   ok "spore installed (launch: foot -e spore or Mod+Space → Spore)"
 }
 install_spore
+
+# ----------------------------------------
+# tuber — light BitTorrent TUI (https://github.com/visnudeva/tuber)
+# ----------------------------------------
+install_tuber() {
+  if command -v tuber >/dev/null 2>&1; then
+    ok "tuber already installed"
+    return 0
+  fi
+  if ! need_cmd go; then
+    warn "tuber not installed — install go, then: git clone https://github.com/visnudeva/tuber && cd tuber && go build -o tuber ./cmd/tuber"
+    return 0
+  fi
+  info "Building tuber from GitHub..."
+  local tmp
+  tmp="$(mktemp -d)"
+  if ! git clone --depth 1 https://github.com/visnudeva/tuber.git "${tmp}/tuber"; then
+    warn "tuber clone failed"
+    rm -rf "${tmp}"
+    return 0
+  fi
+  if ! (cd "${tmp}/tuber" && go build -trimpath -ldflags='-s -w' -o tuber ./cmd/tuber); then
+    warn "tuber build failed"
+    rm -rf "${tmp}"
+    return 0
+  fi
+  ${SUDO} install -Dm755 "${tmp}/tuber/tuber" /usr/local/bin/tuber
+  if [[ -f "${tmp}/tuber/packaging/tuber-open" ]]; then
+    ${SUDO} install -Dm755 "${tmp}/tuber/packaging/tuber-open" /usr/local/bin/tuber-open
+  fi
+  if [[ -f "${tmp}/tuber/assets/tuber.png" ]]; then
+    ${SUDO} install -Dm644 "${tmp}/tuber/assets/tuber.png" /usr/share/pixmaps/tuber.png
+    ${SUDO} install -Dm644 "${tmp}/tuber/assets/tuber.png" /usr/share/icons/hicolor/256x256/apps/tuber.png
+  fi
+  mkdir -p "${HOME}/.local/share/applications"
+  cat >"${HOME}/.local/share/applications/tuber.desktop" <<'EOF'
+[Desktop Entry]
+Type=Application
+Name=tuber
+GenericName=BitTorrent Client
+Comment=Light terminal BitTorrent client
+Exec=tuber-open %U
+TryExec=tuber
+Icon=tuber
+Terminal=false
+Categories=Network;FileTransfer;P2P;
+MimeType=x-scheme-handler/magnet;application/x-bittorrent;
+Keywords=torrent;magnet;bittorrent;download;
+StartupNotify=false
+EOF
+  if command -v xdg-mime >/dev/null 2>&1; then
+    xdg-mime default tuber.desktop x-scheme-handler/magnet 2>/dev/null || true
+    xdg-mime default tuber.desktop application/x-bittorrent 2>/dev/null || true
+  fi
+  rm -rf "${tmp}"
+  ok "tuber installed (launch: foot -e tuber or Mod+t)"
+}
+install_tuber
 
 # ----------------------------------------
 # Swirl compositor (not in official repos)

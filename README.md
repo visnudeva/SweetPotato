@@ -40,6 +40,7 @@ Pick **FR** (AZERTY) or **US** (QWERTY) when asked. Re-login once so close butto
 | `Mod+f` | file manager (thunar) |
 | `Mod+e` | IDE (geany) |
 | `Mod+r` | Music / radio (Spore) |
+| `Mod+t` | Torrents (tuber) |
 | `Mod+Return` | Terminal (foot) |
 | `Mod+m` | Expand focused column to 100% / restore 50/50 |
 | `Mod+a` / `Mod+Shift+space` | Floating toggle |
@@ -84,7 +85,7 @@ Pick **FR** (AZERTY) or **US** (QWERTY) when asked. Re-login once so close butto
 | Nearby share | LocalSend |
 | PDF | mupdf |
 | Images | swayimg |
-| Torrents | Transmission |
+| Torrents | tuber |
 | Webcam | guvcview |
 | Color picker | hyprpicker |
 | Packages | Shelly (+ yay / AUR) |
