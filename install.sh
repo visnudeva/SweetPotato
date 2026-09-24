@@ -457,6 +457,7 @@ cp -f "${SCRIPT_DIR}/swirl/scripts/caffeine.sh" "${HOME}/.config/swirl/scripts/c
 cp -f "${SCRIPT_DIR}/swirl/scripts/tips.sh" "${HOME}/.config/swirl/scripts/tips.sh"
 cp -f "${SCRIPT_DIR}/swirl/scripts/cheatsheet.sh" "${HOME}/.config/swirl/scripts/cheatsheet.sh"
 cp -f "${SCRIPT_DIR}/swirl/scripts/network-applet.py" "${HOME}/.config/swirl/scripts/network-applet.py"
+cp -f "${SCRIPT_DIR}/swirl/scripts/network-tray.sh" "${HOME}/.config/swirl/scripts/network-tray.sh"
 cp -f "${SCRIPT_DIR}/swirl/cheatsheet.txt" "${HOME}/.config/swirl/cheatsheet.txt"
 cp -f "${SCRIPT_DIR}/swirl/scripts/autotile.lua" "${HOME}/.config/swirl/scripts/autotile.lua"
 cp -f "${SCRIPT_DIR}/swirl/scripts/autotile_lib.lua" "${HOME}/.config/swirl/scripts/autotile_lib.lua"
@@ -479,7 +480,8 @@ chmod +x \
   "${HOME}/.config/swirl/scripts/caffeine.sh" \
   "${HOME}/.config/swirl/scripts/tips.sh" \
   "${HOME}/.config/swirl/scripts/cheatsheet.sh" \
-  "${HOME}/.config/swirl/scripts/network-applet.py"
+  "${HOME}/.config/swirl/scripts/network-applet.py" \
+  "${HOME}/.config/swirl/scripts/network-tray.sh"
 # Persist wallpaper choice (include file must exist for sway)
 if [[ ! -f "${HOME}/.config/swirl/wallpaper.conf" ]]; then
   printf 'output * bg "%s" fill\n' "${WALLPAPER_DST}" \
