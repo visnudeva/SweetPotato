@@ -102,6 +102,7 @@ PACMAN_PKGS=(
   github-cli
   wget
   python
+  python-gobject
   pacman-contrib
   # theming / fonts / icons / gtk
   gtk3
@@ -455,6 +456,7 @@ cp -f "${SCRIPT_DIR}/swirl/scripts/ensure-wallpaper.sh" "${HOME}/.config/swirl/s
 cp -f "${SCRIPT_DIR}/swirl/scripts/caffeine.sh" "${HOME}/.config/swirl/scripts/caffeine.sh"
 cp -f "${SCRIPT_DIR}/swirl/scripts/tips.sh" "${HOME}/.config/swirl/scripts/tips.sh"
 cp -f "${SCRIPT_DIR}/swirl/scripts/cheatsheet.sh" "${HOME}/.config/swirl/scripts/cheatsheet.sh"
+cp -f "${SCRIPT_DIR}/swirl/scripts/network-applet.py" "${HOME}/.config/swirl/scripts/network-applet.py"
 cp -f "${SCRIPT_DIR}/swirl/cheatsheet.txt" "${HOME}/.config/swirl/cheatsheet.txt"
 cp -f "${SCRIPT_DIR}/swirl/scripts/autotile.lua" "${HOME}/.config/swirl/scripts/autotile.lua"
 cp -f "${SCRIPT_DIR}/swirl/scripts/autotile_lib.lua" "${HOME}/.config/swirl/scripts/autotile_lib.lua"
@@ -476,7 +478,8 @@ chmod +x \
   "${HOME}/.config/swirl/scripts/ensure-wallpaper.sh" \
   "${HOME}/.config/swirl/scripts/caffeine.sh" \
   "${HOME}/.config/swirl/scripts/tips.sh" \
-  "${HOME}/.config/swirl/scripts/cheatsheet.sh"
+  "${HOME}/.config/swirl/scripts/cheatsheet.sh" \
+  "${HOME}/.config/swirl/scripts/network-applet.py"
 # Persist wallpaper choice (include file must exist for sway)
 if [[ ! -f "${HOME}/.config/swirl/wallpaper.conf" ]]; then
   printf 'output * bg "%s" fill\n' "${WALLPAPER_DST}" \
@@ -610,10 +613,10 @@ if ! id -nG "${USER}" 2>/dev/null | grep -qw wheel; then
 fi
 ok "Polkit udisks rules installed (wheel can restore ISO to USB)"
 
-# NetworkManager dmenu (Wi‑Fi menu — swaybar tray clicks are a no-op)
+# NetworkManager dmenu (quick Wi‑Fi) — tray icon + Mod+n
 cp -f "${SCRIPT_DIR}/networkmanager-dmenu/config.ini" \
   "${HOME}/.config/networkmanager-dmenu/config.ini"
-ok "networkmanager-dmenu themed (Mod+n)"
+ok "networkmanager-dmenu themed (tray + Mod+n)"
 
 # GTK theme + settings
 cp -a "${SCRIPT_DIR}/themes/SweetPotato" "${HOME}/.themes/"

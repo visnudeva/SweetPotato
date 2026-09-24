@@ -99,7 +99,7 @@ Pick **FR** (AZERTY) or **US** (QWERTY) when asked. Re-login once so close butto
 - Status bar / IPC / nag via system tools (`swaybar`, `swaymsg`, `swaynag`)
 - Charcoal GTK accents over Adwaita-dark
 - Screen lock, foot terminal, mako, Geany color scheme
-- Wi‑Fi menu via `networkmanager-dmenu` (`Mod+n`)
+- Wi‑Fi via `networkmanager-dmenu` (tray icon click + `Mod+n`); advanced editor still available from that menu when configured
 - Polkit udisks rules so Disks can write ISOs to USB on Swirl
 - Firefox Save As fix (`xdg-desktop-portal-gtk` PATH)
 - Glycin SVG loader tweak for Papirus on low-RAM machines
