@@ -6,7 +6,7 @@ set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 BACKGROUNDS_DIR="${SCRIPT_DIR}/backgrounds"
-WALLPAPER_DEFAULT="SPixelBG.png"
+WALLPAPER_DEFAULT="SpoNeon.png"
 WALLPAPER_DST_DIR="${HOME}/.local/share/backgrounds"
 WALLPAPER_DST="${WALLPAPER_DST_DIR}/${WALLPAPER_DEFAULT}"
 
@@ -417,7 +417,7 @@ mkdir -p \
   "${HOME}/Pictures/Screenshots" \
   "${HOME}/Videos"
 
-# Wallpapers (default SPixelBG + extras for Mod+Shift+w)
+# Wallpapers (default SpoNeon + extras for Mod+Shift+w)
 mkdir -p "${WALLPAPER_DST_DIR}"
 if [[ -d "${BACKGROUNDS_DIR}" ]]; then
   cp -f "${BACKGROUNDS_DIR}/"*.png "${WALLPAPER_DST_DIR}/"

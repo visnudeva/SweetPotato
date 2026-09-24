@@ -13,7 +13,7 @@ Desktop theme + installer for Arch-based systems. The ISO that ships this theme 
 - Session: bluetooth unblock + `tips.sh` every login (points at Mod+? cheatsheet).
 - **Mod+m** / `expand.sh`: toggle focused column full width ↔ 50/50 pair layout (`set_size`, not fullscreen).
 - Cheatsheet: `cheatsheet.sh` + `cheatsheet.txt`; floating foot via `app_id=sweetpotato-cheatsheet` (`Mod+?`).
-- Wallpaper: `ensure-wallpaper.sh` must not replace a saved `wallpaper.conf` path with the SPixelBG fallback. Default is `SPixelBG.png`; do not ship UsefulBinds/BindsBG.
+- Wallpaper: `ensure-wallpaper.sh` must not replace a saved `wallpaper.conf` path with the SpoNeon fallback. Default is `SpoNeon.png`; do not ship UsefulBinds/BindsBG.
 - Compositor binary is **swirl**; bar / IPC / nag stay stock **swaybar** / **swaymsg** / **swaynag** (from the Arch `sway` package).
 - SweetPotatOs runs `sync-theme.sh` to mirror these files into the live ISO airootfs.
 
