@@ -110,6 +110,7 @@ PACMAN_PKGS=(
   gnome-themes-extra
   papirus-icon-theme
   capitaine-cursors
+  libayatana-appindicator
   xsettingsd
   xfconf
   dconf
