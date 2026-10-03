@@ -1,11 +1,29 @@
-https://github.com/user-attachments/assets/7967621b-1456-4c81-bf9a-e54fdbd8f000
+https://github.com/user-attachments/assets/e1b261fd-dcb4-4ee9-9f7c-58b1e2051926
 
 # SweetPotato, bring the sweetness back to the potatoes
 
-<p align="center">
-  <img src="assets/Screenshot.png" alt="SweetPotato desktop" width="920"
-       style="border-radius: 12px; max-width: 100%; height: auto;">
-</p>
+<table>
+  <tr>
+    <td align="center">
+      <img src="assets/shot-overview.png" alt="Desktop overview" width="440"><br>
+      <sub>Desktop overview</sub>
+    </td>
+    <td align="center">
+      <img src="assets/shot-keybinds.png" alt="Keybinds" width="440"><br>
+      <sub>Keybinds</sub>
+    </td>
+  </tr>
+  <tr>
+    <td align="center">
+      <img src="assets/shot-files.png" alt="Files and terminal" width="440"><br>
+      <sub>Files and terminal</sub>
+    </td>
+    <td align="center">
+      <img src="assets/shot-waypaper.png" alt="Wallpaper picker" width="440"><br>
+      <sub>Wallpaper picker</sub>
+    </td>
+  </tr>
+</table>
 
 <table>
   <tr>
