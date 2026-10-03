@@ -11,6 +11,7 @@ Desktop theme + installer for Arch-based systems. The ISO that ships this theme 
 - Interactive shell: `install.sh` installs **fish**. Login stays bash until `chsh -s /usr/bin/fish`. Scripts stay bash.
 - Image viewer: `swayimg/init.lua` sets `overlay = false` and `decoration = true`. swayimg 5.x reads `init.lua` only. On Sway it otherwise floats over the focused window (`overlay`) and turns the server border off, so the corners stay square.
 - Close window: `Mod+q` and `Escape`. Resize mode still binds Escape to leave the mode.
+- Move window: `Mod+Shift+1`…`0` and the French number-row symbols (`Mod+Shift+ampersand` … `agrave`). A French layout types `1` as Shift+`&`, so the US keysym alone never fires. The bind also follows the window onto that workspace.
 - Ly: `default_input = password`.
 - Status bar polls every 3s (`swirl/scripts/status.sh`).
 - Session: bluetooth unblock + `tips.sh` every login (points at Mod+? cheatsheet).
