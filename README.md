@@ -70,8 +70,6 @@ Re-login once so close buttons and PATH fixes apply fully.
 
 ## Default apps
 
-**Spore** (web radio + local music) and **LocalSend** (nearby sharing) replace **tera** and **Audacious** from earlier builds.
-
 | Role | App |
 |------|-----|
 | Browser | Brave Origin |
@@ -93,8 +91,6 @@ Re-login once so close buttons and PATH fixes apply fully.
 
 ## What’s included
 
-- Swirl compositor configs (FR + US) — scrolling columns + autotile  
-  (lives in `~/.config/swirl/`; Swirl also still reads `/etc/sway/config.d` drop-ins)
 - User overrides: `~/.config/swirl/config.d/user` (seeded once; never overwritten by updates)
 - Status bar / IPC / nag via system tools (`swaybar`, `swaymsg`, `swaynag`)
 - Charcoal GTK accents over Adwaita-dark
