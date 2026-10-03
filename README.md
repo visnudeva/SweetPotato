@@ -28,7 +28,7 @@ chmod +x install.sh
 ./install.sh
 ```
 
-Pick **FR** (AZERTY) or **US** (QWERTY) when asked. Re-login once so close buttons and PATH fixes apply fully.
+Re-login once so close buttons and PATH fixes apply fully.
 
 ## Useful binds
 
@@ -110,12 +110,3 @@ Pick **FR** (AZERTY) or **US** (QWERTY) when asked. Re-login once so close butto
 |---------|--------|
 | 3-finger left / right | Scroll the window strip |
 | 4-finger up / down | Next / previous workspace |
-
-## Switch keyboard layout later
-
-```bash
-cp ~/.config/swirl/config-fr ~/.config/swirl/config   # French
-cp ~/.config/swirl/config-us ~/.config/swirl/config   # US
-```
-
-Then `Mod+Shift+c` to reload.

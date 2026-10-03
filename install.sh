@@ -133,47 +133,6 @@ echo "  Lightweight Swirl theme for Arch-based systems"
 echo
 
 # ----------------------------------------
-# Keyboard layout choice
-# ----------------------------------------
-# Non-interactive: SWEETPOTATO_KB=fr|us, or SWEETPOTATO_NONINTERACTIVE=1
-# which reuses the layout already in ~/.config/swirl/config.
-detect_kb_layout() {
-  local cfg="${HOME}/.config/swirl/config"
-  if [[ -f "${cfg}" ]] && grep -qE 'bindsym \$mod\+ampersand[[:space:]]+workspace' "${cfg}"; then
-    echo fr
-  elif [[ -f "${cfg}" ]] && grep -qE 'bindsym \$mod\+1[[:space:]]+workspace' "${cfg}"; then
-    echo us
-  else
-    echo fr
-  fi
-}
-
-KB_LAYOUT=""
-case "${SWEETPOTATO_KB:-}" in
-  fr|FR|1) KB_LAYOUT="fr" ;;
-  us|US|2) KB_LAYOUT="us" ;;
-esac
-if [[ -z "${KB_LAYOUT}" ]]; then
-  if [[ "${SWEETPOTATO_NONINTERACTIVE:-0}" == "1" ]] || [[ ! -t 0 ]]; then
-    KB_LAYOUT="$(detect_kb_layout)"
-    info "Non-interactive keyboard layout: ${KB_LAYOUT}"
-  else
-    while [[ -z "${KB_LAYOUT}" ]]; do
-      echo "Keyboard layout:"
-      echo "  1) fr  (AZERTY — workspace binds: & é \" ' ( - è _ ç à)"
-      echo "  2) us  (QWERTY — workspace binds: 1 2 3 4 5 6 7 8 9 0)"
-      read -r -p "Choose [1/2]: " choice
-      case "${choice}" in
-        1|fr|FR) KB_LAYOUT="fr" ;;
-        2|us|US) KB_LAYOUT="us" ;;
-        *) warn "Invalid choice." ;;
-      esac
-    done
-  fi
-fi
-ok "Keyboard: ${KB_LAYOUT}"
-
-# ----------------------------------------
 # Privilege helper
 # ----------------------------------------
 SUDO=""
@@ -433,15 +392,8 @@ else
   warn "No wallpapers found in ${BACKGROUNDS_DIR}"
 fi
 
-# Sway config (FR = config, US = config-us)
-if [[ "${KB_LAYOUT}" == "us" ]]; then
-  cp -f "${SCRIPT_DIR}/swirl/config-us" "${HOME}/.config/swirl/config"
-else
-  cp -f "${SCRIPT_DIR}/swirl/config" "${HOME}/.config/swirl/config"
-fi
-# Keep both layouts available for later switching
-cp -f "${SCRIPT_DIR}/swirl/config" "${HOME}/.config/swirl/config-fr"
-cp -f "${SCRIPT_DIR}/swirl/config-us" "${HOME}/.config/swirl/config-us"
+cp -f "${SCRIPT_DIR}/swirl/config" "${HOME}/.config/swirl/config"
+rm -f "${HOME}/.config/swirl/config-fr" "${HOME}/.config/swirl/config-us"
 cp -f "${SCRIPT_DIR}/swirl/scripts/status.sh" "${HOME}/.config/swirl/scripts/status.sh"
 cp -f "${SCRIPT_DIR}/swirl/scripts/apply-theme.sh" "${HOME}/.config/swirl/scripts/apply-theme.sh"
 cp -f "${SCRIPT_DIR}/swirl/scripts/volume.sh" "${HOME}/.config/swirl/scripts/volume.sh"
@@ -689,10 +641,6 @@ echo "  Reload swirl:  Mod+Shift+c"
 echo "  Lock screen:   Mod+l"
 echo "  App menu:      Mod+Space"
 echo "  Login screen:  Ly (reboot after install) — Swirl is the default session"
-echo "  Switch layout later:"
-echo "    cp ~/.config/swirl/config-fr ~/.config/swirl/config   # French"
-echo "    cp ~/.config/swirl/config-us ~/.config/swirl/config   # US"
-echo "  Then Mod+Shift+c to reload."
 echo
 echo "  Re-login once so close buttons (CSD) and PATH fixes apply fully."
 echo
