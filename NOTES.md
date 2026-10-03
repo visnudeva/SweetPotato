@@ -8,6 +8,9 @@ Desktop theme + installer for Arch-based systems. The ISO that ships this theme 
 - Do **not** also ship `~/.config/sway/` — Swirl checks that path **first** and would ignore `~/.config/swirl`. Keep `include /etc/sway/config.d/*` (package drop-ins). `swaylock` stays `~/.config/swaylock`.
 - User overrides: `~/.config/swirl/config.d/user` — seeded once (install / materialize seed-only); loaded last from main config. Never clobber on update. Whole-file forks also live under `~/.config/sweetpotatos/user_edits/`.
 - Default terminal: **foot** (`foot/foot.ini`, `[colors-dark]` + `alpha=1.0` for foot ≥1.26). `Mod+Return` / applauncher / networkmanager-dmenu point at foot.
+- Interactive shell: `install.sh` installs **fish**. Login stays bash until `chsh -s /usr/bin/fish`. Scripts stay bash.
+- Image viewer: `swayimg/init.lua` sets `overlay = false` and `decoration = true`. swayimg 5.x reads `init.lua` only. On Sway it otherwise floats over the focused window (`overlay`) and turns the server border off, so the corners stay square.
+- Close window: `Mod+q` and `Escape`. Resize mode still binds Escape to leave the mode.
 - Ly: `default_input = password`.
 - Status bar polls every 3s (`swirl/scripts/status.sh`).
 - Session: bluetooth unblock + `tips.sh` every login (points at Mod+? cheatsheet).
@@ -30,6 +33,7 @@ Desktop theme + installer for Arch-based systems. The ISO that ships this theme 
 ## Caffeine
 
 - `swirl/scripts/caffeine.sh`: idle inhibit only; lid suspend stays enabled.
+- Power off goes through `swirl/scripts/poweroff.sh`, which drops that idle lock before `systemctl poweroff`. Leaving the lock held can stop the machine with the power light on and no wake. The lock also drops on lid sleep, then comes back after wake. Do not inhibit `sleep`, `shutdown`, or `handle-lid-switch`.
 - Live ISO turns caffeine on by default (injected in SweetPotatOs sync); installed systems follow this repo’s Swirl config.
 
 ## Brightness

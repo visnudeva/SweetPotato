@@ -35,6 +35,7 @@ PACMAN_PKGS=(
   lua
   # apps / tools used by config
   foot
+  fish
   wmenu
   j4-dmenu-desktop
   jq
@@ -405,6 +406,7 @@ cp -f "${SCRIPT_DIR}/swirl/scripts/record.sh" "${HOME}/.config/swirl/scripts/rec
 cp -f "${SCRIPT_DIR}/swirl/scripts/screenshot.sh" "${HOME}/.config/swirl/scripts/screenshot.sh"
 cp -f "${SCRIPT_DIR}/swirl/scripts/ensure-wallpaper.sh" "${HOME}/.config/swirl/scripts/ensure-wallpaper.sh"
 cp -f "${SCRIPT_DIR}/swirl/scripts/caffeine.sh" "${HOME}/.config/swirl/scripts/caffeine.sh"
+cp -f "${SCRIPT_DIR}/swirl/scripts/poweroff.sh" "${HOME}/.config/swirl/scripts/poweroff.sh"
 cp -f "${SCRIPT_DIR}/swirl/scripts/tips.sh" "${HOME}/.config/swirl/scripts/tips.sh"
 cp -f "${SCRIPT_DIR}/swirl/scripts/cheatsheet.sh" "${HOME}/.config/swirl/scripts/cheatsheet.sh"
 cp -f "${SCRIPT_DIR}/swirl/cheatsheet.txt" "${HOME}/.config/swirl/cheatsheet.txt"
@@ -427,6 +429,7 @@ chmod +x \
   "${HOME}/.config/swirl/scripts/screenshot.sh" \
   "${HOME}/.config/swirl/scripts/ensure-wallpaper.sh" \
   "${HOME}/.config/swirl/scripts/caffeine.sh" \
+  "${HOME}/.config/swirl/scripts/poweroff.sh" \
   "${HOME}/.config/swirl/scripts/tips.sh" \
   "${HOME}/.config/swirl/scripts/cheatsheet.sh"
 # Persist wallpaper choice (include file must exist for sway)
@@ -507,6 +510,12 @@ ok "CSD swirl wrapper installed (~/.local/bin/swirl)"
 # Foot (default terminal)
 cp -f "${SCRIPT_DIR}/foot/foot.ini" "${HOME}/.config/foot/foot.ini"
 ok "Foot themed"
+
+# Image viewer: tile like other windows, with Swirl's border
+mkdir -p "${HOME}/.config/swayimg"
+rm -f "${HOME}/.config/swayimg/config"
+cp -f "${SCRIPT_DIR}/swayimg/init.lua" "${HOME}/.config/swayimg/init.lua"
+ok "swayimg tiled window"
 
 # Fastfetch — ASCII SPLogo (chafa/PNG needs cell pixel size; falls back to Arch otherwise)
 mkdir -p "${HOME}/.config/fastfetch"
