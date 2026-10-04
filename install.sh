@@ -377,7 +377,7 @@ mkdir -p \
   "${HOME}/Pictures/Screenshots" \
   "${HOME}/Videos"
 
-# Wallpapers (default SpoNeon + extras for Mod+Shift+w)
+# Wallpapers (default SpoNeon + extras for Mod+Ctrl+w)
 mkdir -p "${WALLPAPER_DST_DIR}"
 if [[ -d "${BACKGROUNDS_DIR}" ]]; then
   cp -f "${BACKGROUNDS_DIR}/"*.png "${WALLPAPER_DST_DIR}/"

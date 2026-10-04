@@ -64,7 +64,7 @@ Re-login once so close buttons and PATH fixes apply fully.
 | `Mod+a` / `Mod+Shift+space` | Floating toggle |
 | `Mod+Shift+f` | Fullscreen |
 | `Mod+?` | Floating keybind cheatsheet (toggle) |
-| `Mod+Shift+w` | Wallpaper selector (waypaper) |
+| `Mod+Ctrl+w` | Wallpaper selector (waypaper) |
 | `Mod+Shift+r` | Resize mode (arrow keys; Enter/Esc to exit) |
 | `Print` | Screenshot → `~/Pictures/Screenshots` (+ clipboard) |
 | `Mod+Shift+Print` | Region screenshot |
