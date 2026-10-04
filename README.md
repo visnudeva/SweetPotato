@@ -61,7 +61,7 @@ Re-login once so close buttons and PATH fixes apply fully.
 | `Mod+t` | Torrents (tuber) |
 | `Mod+Return` | Terminal (foot) |
 | `Mod+m` | Expand focused column to 100% / restore 50/50 |
-| `Mod+a` / `Mod+Shift+space` | Floating toggle |
+| `Mod+a` | Floating toggle |
 | `Mod+Shift+f` | Fullscreen |
 | `Mod+?` | Floating keybind cheatsheet (toggle) |
 | `Mod+Ctrl+w` | Wallpaper selector (waypaper) |
