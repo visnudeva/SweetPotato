@@ -69,7 +69,7 @@ Re-login once so close buttons and PATH fixes apply fully.
 | `Print` | Screenshot → `~/Pictures/Screenshots` (+ clipboard) |
 | `Mod+Shift+Print` | Region screenshot |
 | `Mod+Print` | Screen record toggle (region + audio → `~/Videos`) |
-| `Mod+q` / `Esc` | Kill focused window |
+| `Mod+q` | Close window |
 | `Mod+number` | Change workspaces |
 | `Mod+Tab` | Workspace overview (Super+drag windows between desktops) |
 | `Mod+Shift+Tab` | Overview of windows on the current desktop |
