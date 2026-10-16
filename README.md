@@ -81,7 +81,7 @@ Re-login once so close buttons and PATH fixes apply fully.
 | `Mod+l` | Lock screen |
 | `Mod+c` | Caffeine toggle (no sleep / idle lock) |
 | `Mod+Shift+e` | Exit Swirl |
-| `Mod+o` / `Mod+Escape` | Power off |
+| `Mod+o` / `Mod+Escape` | Power menu |
 | `Mod+Shift+c` | Reload config |
 
 `Mod` is usually the Super/Windows key. After each login, a notification points at `Mod+?` for the floating cheatsheet.
