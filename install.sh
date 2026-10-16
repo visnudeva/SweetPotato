@@ -409,6 +409,7 @@ cp -f "${SCRIPT_DIR}/swirl/scripts/screenshot.sh" "${HOME}/.config/swirl/scripts
 cp -f "${SCRIPT_DIR}/swirl/scripts/ensure-wallpaper.sh" "${HOME}/.config/swirl/scripts/ensure-wallpaper.sh"
 cp -f "${SCRIPT_DIR}/swirl/scripts/caffeine.sh" "${HOME}/.config/swirl/scripts/caffeine.sh"
 cp -f "${SCRIPT_DIR}/swirl/scripts/poweroff.sh" "${HOME}/.config/swirl/scripts/poweroff.sh"
+cp -f "${SCRIPT_DIR}/swirl/scripts/suspend.sh" "${HOME}/.config/swirl/scripts/suspend.sh"
 cp -f "${SCRIPT_DIR}/swirl/scripts/tips.sh" "${HOME}/.config/swirl/scripts/tips.sh"
 cp -f "${SCRIPT_DIR}/swirl/scripts/cheatsheet.sh" "${HOME}/.config/swirl/scripts/cheatsheet.sh"
 cp -f "${SCRIPT_DIR}/swirl/cheatsheet.txt" "${HOME}/.config/swirl/cheatsheet.txt"
@@ -434,6 +435,7 @@ chmod +x \
   "${HOME}/.config/swirl/scripts/ensure-wallpaper.sh" \
   "${HOME}/.config/swirl/scripts/caffeine.sh" \
   "${HOME}/.config/swirl/scripts/poweroff.sh" \
+  "${HOME}/.config/swirl/scripts/suspend.sh" \
   "${HOME}/.config/swirl/scripts/tips.sh" \
   "${HOME}/.config/swirl/scripts/cheatsheet.sh"
 # Persist wallpaper choice (include file must exist for sway)

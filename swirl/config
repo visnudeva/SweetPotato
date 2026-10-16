@@ -36,7 +36,8 @@ exec_always ~/.config/swirl/scripts/ensure-wallpaper.sh
 exec swayidle -w \
           timeout 300 '$lockcmd' \
           timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
-          before-sleep '$lockcmd'
+          before-sleep '$lockcmd' \
+          after-resume 'swaymsg "output * power on"'
 
 ### Input configuration
 #
