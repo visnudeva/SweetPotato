@@ -40,7 +40,8 @@ Desktop theme + installer for Arch-based systems. The ISO that ships this theme 
 ## Brightness
 
 - Laptop backlight via plain `brightnessctl` (`swirl/scripts/brightness.sh`). Keys: `XF86MonBrightnessUp/Down`. Keep this simple — do not add `-n` (`--min-value`) or FSB100-style clampers.
-- **FSB100 removed** — it falsely treated maximized windows as fullscreen and re-clamped to 100%, breaking brightness keys.
+- **Smart Brightness** (`smart-brightness.sh` + `smart-brightness-lib.py`): same idea as [fullscreen-maxbright](https://github.com/visnudeva/fullscreen-maxbright). On compositor fullscreen for a media app or media title, save the level and set 100%; restore on exit. Uses `fullscreen_mode` only (not Mod+m strip maximize). Does not re-clamp while active, so brightness keys still work during a film. Toggle: `Mod+Ctrl+b` or `smart-brightness.sh toggle` (state in `~/.config/sweetpotatos/smart-brightness/enabled`). On by default.
+- **FSB100 removed** — it falsely treated maximized windows as fullscreen and re-clamped to 100%, breaking brightness keys. Smart Brightness replaces that idea without those bugs.
 
 ## Swirl
 

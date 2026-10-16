@@ -399,6 +399,8 @@ cp -f "${SCRIPT_DIR}/swirl/scripts/status.sh" "${HOME}/.config/swirl/scripts/sta
 cp -f "${SCRIPT_DIR}/swirl/scripts/apply-theme.sh" "${HOME}/.config/swirl/scripts/apply-theme.sh"
 cp -f "${SCRIPT_DIR}/swirl/scripts/volume.sh" "${HOME}/.config/swirl/scripts/volume.sh"
 cp -f "${SCRIPT_DIR}/swirl/scripts/brightness.sh" "${HOME}/.config/swirl/scripts/brightness.sh"
+cp -f "${SCRIPT_DIR}/swirl/scripts/smart-brightness.sh" "${HOME}/.config/swirl/scripts/smart-brightness.sh"
+cp -f "${SCRIPT_DIR}/swirl/scripts/smart-brightness-lib.py" "${HOME}/.config/swirl/scripts/smart-brightness-lib.py"
 cp -f "${SCRIPT_DIR}/swirl/scripts/media.sh" "${HOME}/.config/swirl/scripts/media.sh"
 cp -f "${SCRIPT_DIR}/swirl/scripts/applauncher.sh" "${HOME}/.config/swirl/scripts/applauncher.sh"
 cp -f "${SCRIPT_DIR}/swirl/scripts/wallpaper.sh" "${HOME}/.config/swirl/scripts/wallpaper.sh"
@@ -422,6 +424,8 @@ chmod +x \
   "${HOME}/.config/swirl/scripts/apply-theme.sh" \
   "${HOME}/.config/swirl/scripts/volume.sh" \
   "${HOME}/.config/swirl/scripts/brightness.sh" \
+  "${HOME}/.config/swirl/scripts/smart-brightness.sh" \
+  "${HOME}/.config/swirl/scripts/smart-brightness-lib.py" \
   "${HOME}/.config/swirl/scripts/media.sh" \
   "${HOME}/.config/swirl/scripts/applauncher.sh" \
   "${HOME}/.config/swirl/scripts/wallpaper.sh" \

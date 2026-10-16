@@ -80,6 +80,7 @@ Re-login once so close buttons and PATH fixes apply fully.
 | `Mod+Shift+number` | Move window to workspace 1–10 |
 | `Mod+l` | Lock screen |
 | `Mod+c` | Caffeine toggle (no sleep / idle lock) |
+| `Mod+Ctrl+b` | Smart Brightness toggle (max backlight for fullscreen video) |
 | `Mod+Shift+e` | Exit Swirl |
 | `Mod+o` / `Mod+Escape` | Power menu |
 | `Mod+Shift+c` | Reload config |
