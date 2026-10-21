@@ -31,11 +31,11 @@ Desktop theme + installer for Arch-based systems. The ISO that ships this theme 
 - `systemd/logind.conf.d/lid-sleep.conf` installed by `install.sh` as `/etc/systemd/logind.conf.d/50-sweetpotato-lid-sleep.conf`.
 - Remove any leftover `do-not-suspend.conf` that ignores lid switch (it overrides our drop-in by name sort order).
 - Sleep from the power menu uses `suspend.sh` (clears leftover caffeine inhibitors, then `systemctl suspend`).
-- `swayidle` runs `after-resume 'swaymsg "output * power on"'` so lid wake does not leave a black panel. Do **not** use `output * enable` (that caused other wake bugs). Do **not** take a `systemd-inhibit` lock across sleep.
+- `swayidle` locks after idle and runs `after-resume 'swaymsg "output * power on"'` so lid wake does not leave a black panel. Do **not** use idle `output * power off` (asleep LED, no wake on some laptops). Do **not** use `output * enable`. Do **not** take a `systemd-inhibit` lock across sleep.
 
 ## Caffeine
 
-- `swirl/scripts/caffeine.sh`: idle timeouts only; lid suspend stays enabled. Same `after-resume` output power-on as the normal watcher.
+- `swirl/scripts/caffeine.sh`: drops the idle lock timeout only; lid suspend stays enabled. Same before-sleep lock and after-resume panel power-on as the normal watcher. No compositor output power-off.
 - Power off goes through `swirl/scripts/poweroff.sh`, which drops leftover caffeine inhibitors before `systemctl poweroff`. Leaving an old idle lock held can stop the machine with the power light on and no wake. Do not inhibit `sleep`, `shutdown`, or `handle-lid-switch`.
 - Live ISO turns caffeine on by default (injected in SweetPotatOs sync); installed systems follow this repo’s Swirl config.
 
