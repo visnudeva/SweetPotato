@@ -6,7 +6,7 @@ Desktop theme + installer for Arch-based systems. The ISO that ships this theme 
 
 - Source of truth for: **Swirl** compositor config under `~/.config/swirl/` (repo dir `swirl/`), gtk, **foot** (default terminal), mako, swaylock, fastfetch, wallpapers, GTK theme, `install.sh`.
 - Do **not** also ship `~/.config/sway/` — Swirl checks that path **first** and would ignore `~/.config/swirl`. Keep `include /etc/sway/config.d/*` (package drop-ins). `swaylock` stays `~/.config/swaylock`.
-- User overrides: `~/.config/swirl/config.d/user` — seeded once (install / materialize seed-only); loaded last from main config. Never clobber on update. Whole-file forks also live under `~/.config/sweetpotatos/user_edits/`.
+- User overrides: `~/.config/swirl/config.d/user` — seeded once (install / sprout seed-only); loaded last from main config. Never clobber on update. Whole-file forks also live under `~/.config/sweetpotatos/user_edits/`.
 - Default terminal: **foot** (`foot/foot.ini`, `[colors-dark]` + `alpha=1.0` for foot ≥1.26). `Mod+Return` / applauncher / networkmanager-dmenu point at foot.
 - Interactive shell: `install.sh` installs **fish**. `foot/foot.ini` sets `shell=/usr/bin/fish`, so opening the terminal starts fish. Login stays bash. Scripts stay bash.
 - Image viewer: `swayimg/init.lua` sets `overlay = false` and `decoration = true`. swayimg 5.x reads `init.lua` only. On Sway it otherwise floats over the focused window (`overlay`) and turns the server border off, so the corners stay square.
