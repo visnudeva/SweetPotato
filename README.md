@@ -65,6 +65,7 @@ Re-login once so close buttons and PATH fixes apply fully.
 | `Mod+Shift+f` | Fullscreen |
 | `Mod+?` | Floating keybind cheatsheet (toggle) |
 | `Mod+Ctrl+w` | Wallpaper selector (waypaper) |
+| `Mod+Ctrl+l` | Laniakea (generative wallpaper) |
 | `Mod+Shift+r` | Resize mode (arrow keys; Enter/Esc to exit) |
 | `Print` | Screenshot → `~/Pictures/Screenshots` (+ clipboard) |
 | `Mod+Shift+Print` | Region screenshot |
