@@ -23,7 +23,7 @@ Desktop theme + installer for Arch-based systems. The ISO that ships this theme 
 
 ## Fastfetch
 
-- Config: `fastfetch/config.jsonc` → `SPLogo.png` with `logo.type: chafa` (colored ASCII potato from the PNG; works in foot). Keep `SPLogo.asc` only as a last-resort file.
+- Config: `fastfetch/config.jsonc` → `SPLogo.png` with `logo.type: sixel` (real PNG pixels in foot; chafa only paints Unicode blocks). Keep `SPLogo.asc` only as a last-resort file. Dark Sweet potato / Ube swap in `KanjiPink.png` / `KanjiUbe.png` via theme.sh.
 - Keep `SPLogo.png` (colored potato) as the source of truth. ASCII `SPLogo.asc` is a last-resort fallback file, not the primary logo.
 
 ## Lid close
