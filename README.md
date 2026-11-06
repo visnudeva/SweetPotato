@@ -86,7 +86,7 @@ Re-login once so close buttons and PATH fixes apply fully.
 | `Mod+o` / `Mod+Escape` | Power menu |
 | `Mod+Shift+c` | Reload config |
 
-`Mod` is usually the Super/Windows key. After each login, a notification points at `Mod+?` for the floating cheatsheet.
+`Mod` is usually the Super/Windows key. After each login, a notification points at `Mod+?` for the floating cheatsheet. On that page, `Mod+Shift+w` opens the project website and `Mod+Shift+x` toggles the login reminder.
 
 ## Default apps
 
