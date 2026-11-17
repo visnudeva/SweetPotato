@@ -39,6 +39,10 @@ Desktop theme + installer for Arch-based systems. The ISO that ships this theme 
 - Power off goes through `swirl/scripts/poweroff.sh`, which drops leftover caffeine inhibitors before `systemctl poweroff`. Leaving an old idle lock held can stop the machine with the power light on and no wake. Do not inhibit `sleep`, `shutdown`, or `handle-lid-switch`.
 - Live ISO turns caffeine on by default (injected in SweetPotatOs sync); installed systems follow this repo’s Swirl config.
 
+## Settings
+
+- **SweetPotatOs Settings** (`swirl/scripts/settings.py`): GTK hub for themer, waypaper/Laniakea, corners and gaps, Smart Brightness, caffeine, and common system tools. Bound as **Mod+,** via `sweetpotatos-settings` on SweetPotatOs. Escape closes it. Keep toggles as wrappers around the existing scripts — do not fork state.
+
 ## Brightness
 
 - Laptop backlight via plain `brightnessctl` (`swirl/scripts/brightness.sh`). Keys: `XF86MonBrightnessUp/Down`. Keep this simple — do not add `-n` (`--min-value`) or FSB100-style clampers.
