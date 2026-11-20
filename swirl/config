@@ -232,12 +232,14 @@ seat * xcursor_theme capitaine-cursors 24
     # Mod+number / Up/Down also exit.
     bindsym --no-repeat $mod+Tab scale_workspaces toggle
     bindsym $mod+Ctrl+h exec ~/.config/swirl/scripts/hot-corner.sh toggle
-    # Wall mode: free 2D pan of the strip (Settings → Desktop → Wall; default off).
+    # Wall mode: 2D tile grid + viewport (Settings → Desktop → Wall; default off).
     bindsym $mod+Ctrl+Shift+w exec ~/.config/swirl/scripts/wall-mode.sh toggle
     bindsym $mod+Alt+Left wall_pan left
     bindsym $mod+Alt+Right wall_pan right
     bindsym $mod+Alt+Up wall_pan up
     bindsym $mod+Alt+Down wall_pan down
+    bindsym $mod+Alt+u wall_zoom out
+    bindsym $mod+Alt+n wall_zoom in
 #
 # Layout stuff:
 #
