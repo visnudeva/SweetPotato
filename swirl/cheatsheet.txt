@@ -51,6 +51,8 @@
   Mod+Ctrl+Shift+w   Wall mode (2D tile grid) on/off
   Mod+Alt+arrows     Pan the wall viewport
   Mod+Alt+u / n      Zoom wall out / in
+  Mod+Alt+Return     Toggle fit-all ↔ focused window
+  Mod+Tab (wall on)  Same fit/focus toggle (not workspace overview)
   Mod+Ctrl+d         Displays (nwg-displays)
   Mod+Ctrl+b         Smart Brightness (toggle; fullscreen video → max)
 
