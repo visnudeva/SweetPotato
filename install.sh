@@ -396,6 +396,8 @@ fi
 cp -f "${SCRIPT_DIR}/swirl/config" "${HOME}/.config/swirl/config"
 rm -f "${HOME}/.config/swirl/config-fr" "${HOME}/.config/swirl/config-us"
 cp -f "${SCRIPT_DIR}/swirl/scripts/status.sh" "${HOME}/.config/swirl/scripts/status.sh"
+cp -f "${SCRIPT_DIR}/swirl/scripts/status-detail.sh" "${HOME}/.config/swirl/scripts/status-detail.sh"
+cp -f "${SCRIPT_DIR}/swirl/scripts/spo_ui.py" "${HOME}/.config/swirl/scripts/spo_ui.py"
 cp -f "${SCRIPT_DIR}/swirl/scripts/apply-theme.sh" "${HOME}/.config/swirl/scripts/apply-theme.sh"
 cp -f "${SCRIPT_DIR}/swirl/scripts/volume.sh" "${HOME}/.config/swirl/scripts/volume.sh"
 cp -f "${SCRIPT_DIR}/swirl/scripts/brightness.sh" "${HOME}/.config/swirl/scripts/brightness.sh"
@@ -412,10 +414,13 @@ cp -f "${SCRIPT_DIR}/swirl/scripts/poweroff.sh" "${HOME}/.config/swirl/scripts/p
 cp -f "${SCRIPT_DIR}/swirl/scripts/suspend.sh" "${HOME}/.config/swirl/scripts/suspend.sh"
 cp -f "${SCRIPT_DIR}/swirl/scripts/tips.sh" "${HOME}/.config/swirl/scripts/tips.sh"
 cp -f "${SCRIPT_DIR}/swirl/scripts/cheatsheet.sh" "${HOME}/.config/swirl/scripts/cheatsheet.sh"
+cp -f "${SCRIPT_DIR}/swirl/scripts/cheatsheet.py" "${HOME}/.config/swirl/scripts/cheatsheet.py"
 cp -f "${SCRIPT_DIR}/swirl/cheatsheet.txt" "${HOME}/.config/swirl/cheatsheet.txt"
 cp -f "${SCRIPT_DIR}/swirl/scripts/hot-corner.sh" "${HOME}/.config/swirl/scripts/hot-corner.sh"
-cp -f "${SCRIPT_DIR}/swirl/scripts/wall-mode.sh" "${HOME}/.config/swirl/scripts/wall-mode.sh"
+# wall-mode.sh is lab-only (sweetpotatos-update --wall); do not install by default.
+rm -f "${HOME}/.config/swirl/scripts/wall-mode.sh"
 cp -f "${SCRIPT_DIR}/swirl/scripts/settings.py" "${HOME}/.config/swirl/scripts/settings.py"
+cp -f "${SCRIPT_DIR}/swirl/scripts/hue.py" "${HOME}/.config/swirl/scripts/hue.py"
 cp -f "${SCRIPT_DIR}/swirl/scripts/autotile.lua" "${HOME}/.config/swirl/scripts/autotile.lua"
 cp -f "${SCRIPT_DIR}/swirl/scripts/autotile_lib.lua" "${HOME}/.config/swirl/scripts/autotile_lib.lua"
 # User keybind/config overrides — seed once; never clobber on reinstall.
@@ -425,6 +430,8 @@ if [[ ! -f "${HOME}/.config/swirl/config.d/user" ]]; then
 fi
 chmod +x \
   "${HOME}/.config/swirl/scripts/status.sh" \
+  "${HOME}/.config/swirl/scripts/status-detail.sh" \
+  "${HOME}/.config/swirl/scripts/spo_ui.py" \
   "${HOME}/.config/swirl/scripts/apply-theme.sh" \
   "${HOME}/.config/swirl/scripts/volume.sh" \
   "${HOME}/.config/swirl/scripts/brightness.sh" \
@@ -441,9 +448,10 @@ chmod +x \
   "${HOME}/.config/swirl/scripts/suspend.sh" \
   "${HOME}/.config/swirl/scripts/tips.sh" \
   "${HOME}/.config/swirl/scripts/cheatsheet.sh" \
+  "${HOME}/.config/swirl/scripts/cheatsheet.py" \
   "${HOME}/.config/swirl/scripts/hot-corner.sh" \
-  "${HOME}/.config/swirl/scripts/wall-mode.sh" \
-  "${HOME}/.config/swirl/scripts/settings.py"
+  "${HOME}/.config/swirl/scripts/settings.py" \
+  "${HOME}/.config/swirl/scripts/hue.py"
 # Persist wallpaper choice (include file must exist for sway)
 if [[ ! -f "${HOME}/.config/swirl/wallpaper.conf" ]]; then
   printf 'output * bg "%s" fill\n' "${WALLPAPER_DST}" \
