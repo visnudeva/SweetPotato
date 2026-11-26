@@ -396,7 +396,9 @@ fi
 cp -f "${SCRIPT_DIR}/swirl/config" "${HOME}/.config/swirl/config"
 rm -f "${HOME}/.config/swirl/config-fr" "${HOME}/.config/swirl/config-us"
 cp -f "${SCRIPT_DIR}/swirl/scripts/status.sh" "${HOME}/.config/swirl/scripts/status.sh"
-cp -f "${SCRIPT_DIR}/swirl/scripts/status-detail.sh" "${HOME}/.config/swirl/scripts/status-detail.sh"
+cp -f "${SCRIPT_DIR}/swirl/scripts/tray-mode.sh" "${HOME}/.config/swirl/scripts/tray-mode.sh"
+rm -f "${HOME}/.config/swirl/scripts/status-detail.sh" \
+  "${HOME}/.config/sweetpotatos/status-detail"
 cp -f "${SCRIPT_DIR}/swirl/scripts/spo_ui.py" "${HOME}/.config/swirl/scripts/spo_ui.py"
 cp -f "${SCRIPT_DIR}/swirl/scripts/apply-theme.sh" "${HOME}/.config/swirl/scripts/apply-theme.sh"
 cp -f "${SCRIPT_DIR}/swirl/scripts/volume.sh" "${HOME}/.config/swirl/scripts/volume.sh"
@@ -430,7 +432,7 @@ if [[ ! -f "${HOME}/.config/swirl/config.d/user" ]]; then
 fi
 chmod +x \
   "${HOME}/.config/swirl/scripts/status.sh" \
-  "${HOME}/.config/swirl/scripts/status-detail.sh" \
+  "${HOME}/.config/swirl/scripts/tray-mode.sh" \
   "${HOME}/.config/swirl/scripts/spo_ui.py" \
   "${HOME}/.config/swirl/scripts/apply-theme.sh" \
   "${HOME}/.config/swirl/scripts/volume.sh" \

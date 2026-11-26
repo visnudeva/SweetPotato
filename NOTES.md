@@ -13,7 +13,7 @@ Desktop theme + installer for Arch-based systems. The ISO that ships this theme 
 - Close window: `Mod+q` and `Escape`. Escape runs `escape.sh`: if `wmenu` is open (app launcher, Wi-Fi, wallpaper), it closes that menu and leaves the window alone. Otherwise it closes the focused window. Resize mode still binds Escape to leave the mode.
 - Move window: `Mod+Shift+1`…`0` and the French number-row symbols (`Mod+Shift+ampersand` … `agrave`). A French layout types `1` as Shift+`&`, so the US keysym alone never fires. The bind also follows the window onto that workspace.
 - Ly: `default_input = password`.
-- Status bar polls every 10s (`swirl/scripts/status.sh`): volume · battery · wifi · BT · mounts · clock. No detailed/CPU/RAM mode and no Settings toggle. Tray is always light (text) — no GTK applets.
+- Status bar polls every 10s (`swirl/scripts/status.sh`): volume · battery · wifi · BT · mounts · clock. `tray-mode.sh apply` keeps GTK tray applets off (exec_always). No detailed-status script or Settings toggles for the bar.
 - Session: bluetooth unblock + `tips.sh` once per login opens Settings (disable via Settings → Open Settings at login / `login-tip=off`).
 - **Mod+m** / `expand.sh`: toggle focused column full width ↔ 50/50 pair layout (`set_size`, not fullscreen).
 - Keybinds panel: `cheatsheet.sh` → `cheatsheet.py` + `cheatsheet.txt`; same GTK chrome as Settings/themer (`spo_ui.py`, `app_id=sweetpotato-cheatsheet`, Mod+?).
