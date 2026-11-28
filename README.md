@@ -125,4 +125,5 @@ Re-login once so close buttons and PATH fixes apply fully.
 | Gesture | Action |
 |---------|--------|
 | 3-finger left / right | Scroll the window strip |
-| 4-finger up / down | Next / previous workspace |
+| 3-finger up / down | Next / previous workspace |
+| 4-finger up / down | Overview |
